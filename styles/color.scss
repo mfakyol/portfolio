@@ -1,15 +1,14 @@
-:root {
-  --bg-primary: #ffff;
-  --text-color: #000;
+:root[theme="dark"] {
+  --bg-primary: #121212;
+  --text-primary: #fff;
+
+  color-scheme: dark;
 }
 
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     --bg-primary: #121212;
-//     --text-color: #fff;
-//   }
+:root[theme="light"] {
+  --bg-primary: #ffff;
+  --text-primary: #000;
+  --boder-color-primary: #000;
 
-//   html {
-//     color-scheme: dark;
-//   }
-// }
+  color-scheme: light;
+}

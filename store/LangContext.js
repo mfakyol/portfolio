@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from "react";
-import translations from "../public/translations.json";
+import translations from "@constants/translations";
 
 const LangContext = React.createContext();
 

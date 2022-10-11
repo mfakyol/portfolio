@@ -2,19 +2,27 @@
   "en": {
     "home": "home",
     "about": "about",
-    "skill": "skill",
+    "skills": "skills",
     "projects": "projects",
     "contact": "contact",
     "en": "english",
-    "tr": "turkish"
+    "tr": "turkish",
+    "light": "light",
+    "dark": "dark",
+    "auto": "auto",
+    "theme": "theme"
   },
   "tr": {
     "home": "ana sayfa",
     "about": "hakımda",
-    "skill": "yetenekler",
+    "skills": "yetenekler",
     "projects": "projeler",
     "contact": "iletişim",
     "en": "ingilizce",
-    "tr": "türkçe"
+    "tr": "türkçe",
+    "light": "açık",
+    "dark": "koyu",
+    "auto": "oto",
+    "theme": "tema"
   }
 }
