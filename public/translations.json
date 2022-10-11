@@ -1,0 +1,20 @@
+{
+  "en": {
+    "home": "home",
+    "about": "about",
+    "skill": "skill",
+    "projects": "projects",
+    "contact": "contact",
+    "en": "english",
+    "tr": "turkish"
+  },
+  "tr": {
+    "home": "ana sayfa",
+    "about": "hakımda",
+    "skill": "yetenekler",
+    "projects": "projeler",
+    "contact": "iletişim",
+    "en": "ingilizce",
+    "tr": "türkçe"
+  }
+}
