@@ -19,6 +19,8 @@ a {
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 ul {
@@ -30,4 +32,7 @@ ul {
 section[id][inpagescroll] {
   min-height: calc((100vh - 80px));
   scroll-margin-top: 80px;
+  margin-bottom: 32px;
 }
+
+

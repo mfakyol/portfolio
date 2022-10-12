@@ -6,8 +6,10 @@ import { useCallback, useEffect, useState } from "react";
 import LangSelect from "@components/LangSelect";
 import ThemeSelect from "@components/ThemeSelect";
 import BurgerMenuIcon from "@components/_icons/BurgerMenuIcon";
+import { useRouter } from "next/router";
 
 function Navbar() {
+  const router = useRouter();
   const t = useTranslation();
   const [scroll, setScroll] = useState(false);
   const [isOpen, setIsopen] = useState(false);
@@ -47,7 +49,7 @@ function Navbar() {
             <li key={index} className={classes.navItem}>
               <Link href={link.href}>
                 <a className={classes.navItemContent} onClick={() => setIsopen(false)}>
-                  {t(link.label)}
+                  {t(link.label).toLocaleCapitalCase(router.locale)}
                 </a>
               </Link>
             </li>

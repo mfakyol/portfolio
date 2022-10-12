@@ -1,0 +1,38 @@
+[
+  {
+    "label": "HTML",
+    "src": "/images/skills/html5.png"
+  },
+  {
+    "label": "CSS",
+    "src": "/images/skills/css3.png"
+  },
+  {
+    "label": "JavaScript",
+    "src": "/images/skills/js.png"
+  },
+  {
+    "label": "TypeScript",
+    "src": "/images/skills/ts.png"
+  },
+  {
+    "label": "React",
+    "src": "/images/skills/react-js.png"
+  },
+  {
+    "label": "Node.js",
+    "src": "/images/skills/node-js.png"
+  },
+  {
+    "label": "Next.js",
+    "src": "/images/skills/next-js.png"
+  },
+  {
+    "label": "sass",
+    "src": "/images/skills/sass.png"
+  },
+  {
+    "label": "Github",
+    "src": "/images/skills/github.png"
+  }
+]

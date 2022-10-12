@@ -4,7 +4,8 @@ import AutoThemeIcon from "@components/_icons/AutoThemeIcon";
 import DarkThemeIcon from "@components/_icons/DarkThemeIcon";
 import LightThemeIcon from "@components/_icons/LightThemeIcon";
 import { useCallback, useEffect, useRef, useState } from "react";
-import themes from '@constants/themes';
+import themes from "@constants/themes";
+import { useRouter } from "next/router";
 
 const themeIconMap = {
   auto: AutoThemeIcon,
@@ -12,21 +13,18 @@ const themeIconMap = {
   dark: DarkThemeIcon,
 };
 
-function ThemeSelect({className=""}) {
+function ThemeSelect({ className = "" }) {
   const ref = useRef();
+  const router = useRouter();
   const t = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("auto");
 
-
   useEffect(() => {
-    setSelectedTheme(localStorage.getItem("theme"))
-  
-    return () => {
-      
-    }
-  }, [])
-  
+    setSelectedTheme(localStorage.getItem("theme"));
+
+    return () => {};
+  }, []);
 
   const event = useCallback((e) => {
     if (ref.current.contains(e.target)) return;
@@ -76,13 +74,13 @@ function ThemeSelect({className=""}) {
     setSelectedTheme(theme);
   }, []);
 
-  const ThemeIconComponent = themeIconMap[selectedTheme];
+  const ThemeIconComponent = themeIconMap[selectedTheme || "auto"];
 
   return (
     <div className={`${classes.themeSelect} ${className}`}>
       <div className={classes.selectedTheme} onClick={() => setIsOpen((prev) => !prev)}>
         <ThemeIconComponent className={classes.themeIcon} />
-        <span className={classes.selectedThemeText}>{t("theme")}</span>
+        <span className={classes.selectedThemeText}>{t("theme").toLocaleUpperCase(router.locale)}</span>
       </div>
       <ul ref={ref} className={`${classes.themeList} ${isOpen ? classes.show : ""}`}>
         {themes.map((theme) => (

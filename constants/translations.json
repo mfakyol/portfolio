@@ -10,7 +10,15 @@
     "light": "light",
     "dark": "dark",
     "auto": "auto",
-    "theme": "theme"
+    "theme": "theme",
+    "see_more":"see more",
+    "contact_with_me":"contact with me",
+    "name": "name",
+    "email": "email",
+    "subject": "subject",
+    "message": "message",
+    "submit": "submit",
+    "connect_with_me": "connect with me"
   },
   "tr": {
     "home": "ana sayfa",
@@ -23,6 +31,14 @@
     "light": "açık",
     "dark": "koyu",
     "auto": "oto",
-    "theme": "tema"
+    "theme": "tema",
+    "see_more":"daha fazla",
+    "contact_with_me":"iletişim kur",
+    "name": "isim",
+    "email": "mail adresi",
+    "subject": "başlık",
+    "message": "mesaj",
+    "submit": "gönder",
+    "connect_with_me": "bağlantı kur"
   }
 }

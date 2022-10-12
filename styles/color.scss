@@ -1,12 +1,20 @@
-:root[theme="dark"] {
-  --bg-primary: #121212;
-  --text-primary: #fff;
+:root{
+  --purple: #6c5ce7;
+  --purple-08: rgb(108, 92, 231, .8);
+  --blue: #0097e6;
+  --input-border-color: #767676;
+}
 
+:root[theme="dark"] {
+  --bg-primary: #1b1b1b;
+  --bg-secondary: #242424;
+  --text-primary: #fff;
   color-scheme: dark;
 }
 
 :root[theme="light"] {
   --bg-primary: #ffff;
+  --bg-secondary: #f2f5f8;
   --text-primary: #000;
   --boder-color-primary: #000;
 

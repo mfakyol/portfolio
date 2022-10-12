@@ -35,12 +35,12 @@ function LangSelect({className=""}) {
   return (
     <div className={`${classes.langSelect} ${className}`}>
       <div className={classes.selectedLang} onClick={() => setIsOpen((prev) => !prev)}>
-        <GlobeIcon className={classes.globeIcon} /> <span className={classes.selectedLangText}>{router.locale}</span>
+        <GlobeIcon className={classes.globeIcon} /> <span className={classes.selectedLangText}>{router.locale.toLocaleUpperCase()}</span>
       </div>
       <ul ref={ref} className={`${classes.langList} ${isOpen ? classes.show : ""}`}>
         {langs.map((lang) => (
           <li key={lang} className={`${classes.langItem} ${router.locale == lang ? classes.selected : ""}`}>
-            <Link href={router.pathname} locale={lang}>
+            <Link href={router.asPath} locale={lang}>
               <a
                 className={classes.langItemContent}
                 onClick={() => {
