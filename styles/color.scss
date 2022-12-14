@@ -1,22 +1,20 @@
-:root{
+:root {
   --purple: #6c5ce7;
-  --purple-08: rgb(108, 92, 231, .8);
+  --purple-08: rgb(108, 92, 231, 0.8);
   --blue: #0097e6;
-  --input-border-color: #767676;
+
+  --bg-primary: #ffff;
+  --bg-secondary: #f2f5f8;
+  --text-primary: #000;
+  --boder-color-primary: #000;
+  --input-border-color: #ddd;
+  color-scheme: light;
 }
 
 :root[theme="dark"] {
   --bg-primary: #1b1b1b;
   --bg-secondary: #242424;
   --text-primary: #fff;
+  --input-border-color: #373737;
   color-scheme: dark;
-}
-
-:root[theme="light"] {
-  --bg-primary: #ffff;
-  --bg-secondary: #f2f5f8;
-  --text-primary: #000;
-  --boder-color-primary: #000;
-
-  color-scheme: light;
 }

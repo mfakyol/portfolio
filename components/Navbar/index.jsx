@@ -38,6 +38,13 @@ function Navbar() {
     };
   }, [isOpen, closeEvent]);
 
+  const handleOnClick = (e, link) => {
+    console.log(link)
+    const el = document.querySelector(link)
+    el.scrollIntoView({behavior: "smooth" });
+    setIsopen(false)
+  }
+
   return (
     <header className={`${classes.header} ${scroll ? classes.boxShadow : ""}`}>
       <Link href="/#home">
@@ -46,12 +53,8 @@ function Navbar() {
       <nav className={`${classes.nav} ${isOpen ? classes.open : ""}`}>
         <ul className={classes.navList}>
           {navListLinks.map((link, index) => (
-            <li key={index} className={classes.navItem}>
-              <Link href={link.href}>
-                <a className={classes.navItemContent} onClick={() => setIsopen(false)}>
-                  {t(link.label).toLocaleCapitalCase(router.locale)}
-                </a>
-              </Link>
+            <li key={index} className={classes.navItem} onClick={(e) => handleOnClick(e,link.href)}>
+              {t(link.label).toLocaleCapitalCase(router.locale)}
             </li>
           ))}
         </ul>

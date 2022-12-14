@@ -42,7 +42,7 @@ function Contact() {
               {"I am available for freelance or full-time positions. Contact me and let's talk."}
             </p>
 
-            <p className={classes.connectTitle}>{t("connect_with_me").toLocaleUpperCase(router.locale)}</p>
+            <p className={classes.connectTitle}>{t("socials").toLocaleUpperCase(router.locale)}</p>
             <ul className={classes.connectList}>
               {connects.map((connect, index) => (
                 <li key={index} className={classes.connectItem}>

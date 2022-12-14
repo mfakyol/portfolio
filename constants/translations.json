@@ -11,14 +11,21 @@
     "dark": "dark",
     "auto": "auto",
     "theme": "theme",
-    "see_more":"see more",
-    "contact_with_me":"contact with me",
+    "see_more": "see more",
+    "contact_with_me": "contact with me",
     "name": "name",
     "email": "email",
     "subject": "subject",
     "message": "message",
     "submit": "submit",
-    "connect_with_me": "connect with me"
+    "connect_with_me": "connect with me",
+    "socials": "Socials",
+    "home_title_1": "Hi,",
+    "home_title_2": "I,m Fatih,",
+    "home_title_3": "Frontend Developer.",
+    "slogan": "Web developer from Istanbul, Turkey. I create custom websites to help your businnesses do better.",
+    "about_me": "About Me",
+    "about_me_article": "Hello, I'm Fatih, a frontend developer. I live in Istanbul. I love turning creative designs into accessible, user-friendly and interactive applications. I love following and experimenting with current technologies. Seeing the results of my projects motivates me to do more. I can't wait to meet you, feel free to contact me."
   },
   "tr": {
     "home": "ana sayfa",
@@ -32,13 +39,20 @@
     "dark": "koyu",
     "auto": "oto",
     "theme": "tema",
-    "see_more":"daha fazla",
-    "contact_with_me":"iletişim kur",
+    "see_more": "daha fazla",
+    "contact_with_me": "iletişim kur",
     "name": "isim",
     "email": "mail adresi",
     "subject": "başlık",
     "message": "mesaj",
     "submit": "gönder",
-    "connect_with_me": "bağlantı kur"
+    "connect_with_me": "bağlantı kur",
+    "socials": "Hesaplar",
+    "home_title_1": "Merhaba,",
+    "home_title_2": "Ben Fatih,",
+    "home_title_3": "Frontend geliştiricisiyim.",
+    "slogan": "İstanbul, Türkiye'den web geliştiricisi. İşletmelerinizin daha iyisini yapmasına yardımcı olmak için özel web siteleri oluşturuyorum.",
+    "about_me": "Hakkımda",
+    "about_me_article": "Merhaba , ben Fatih, bir frontend geliştiriciyim. İstanbul'da yaşıyorum. Yaratıcı tasarımları erişilebilir kullanıcı dostu ve interaktif uygulamalara dönüştürmeyi seviyorum. Güncel teknolojileri takip etmeyi ve bu teknolojileri deneme bayılıyorum. Yaptığım projelerin sonuçlarını görmek beni daha fazlası için motive ediyor. Sizinle tanışmak için sabırsızlanıyorum. Benimle iletişim kurmaktan çekinmeyin."
   }
 }

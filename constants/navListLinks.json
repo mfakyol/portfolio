@@ -1,22 +1,22 @@
 [
   {
     "label": "home",
-    "href": "/#home"
+    "href": "#home"
   },
   {
     "label": "about",
-    "href": "/#about"
+    "href": "#about"
   },
   {
     "label": "skills",
-    "href": "/#skills"
+    "href": "#skills"
   },
   {
     "label": "projects",
-    "href": "/#projects"
+    "href": "#projects"
   },
   {
     "label": "contact",
-    "href": "/#contact"
+    "href": "#contact"
   }
 ]

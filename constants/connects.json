@@ -2,21 +2,13 @@
   {
     "label": "github",
     "iconSrc": "/images/connects/github.svg",
-    "href": ""
+    "href": "https://github.com/mfakyol"
   },
   {
     "label": "linkedin",
     "iconSrc": "/images/connects/linkedin.svg",
-    "href": ""
-  },
-  {
-    "label": "email",
-    "iconSrc": "/images/connects/email.svg",
-    "href": ""
-  },
-  {
-    "label": "whatsapp",
-    "iconSrc": "/images/connects/whatsapp.svg",
-    "href": ""
+    "href": "https://www.linkedin.com/in/fatih-akyol-844701183/"
   }
+ 
+ 
 ]

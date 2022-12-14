@@ -11,7 +11,7 @@
     padding: 4px 8px;
 
     & > .themeIcon {
-      fill: var(--text-primary);
+      fill: #ffffff;
       width: 16px;
       height: 16px;
       margin-right: 8px;
@@ -27,6 +27,7 @@
     top: 100%;
     right: 0;
     background-color: var(--bg-primary);
+    color: var(--text-primary);
     box-shadow: rgba(0, 0, 0, 0.16) 0 0 6px;
     display: none;
     margin-top: 4px;

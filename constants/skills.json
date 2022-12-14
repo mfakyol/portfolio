@@ -20,8 +20,24 @@
     "src": "/images/skills/react-js.png"
   },
   {
+    "label": "Redux",
+    "src": "/images/skills/redux.png"
+  },
+  {
+    "label": "Vue.js",
+    "src": "/images/skills/vue-js.png"
+  },
+  {
     "label": "Node.js",
     "src": "/images/skills/node-js.png"
+  },
+  {
+    "label": "Express.js",
+    "src": "/images/skills/express.png"
+  },
+  {
+    "label": "MongoDB",
+    "src": "/images/skills/mongodb.png"
   },
   {
     "label": "Next.js",
@@ -32,7 +48,19 @@
     "src": "/images/skills/sass.png"
   },
   {
+    "label": "Figma",
+    "src": "/images/skills/figma.png"
+  },
+  {
+    "label": "Git",
+    "src": "/images/skills/git.png"
+  },
+  {
     "label": "Github",
     "src": "/images/skills/github.png"
+  },
+  {
+    "label": "Terminal",
+    "src": "/images/skills/terminal.png"
   }
 ]
