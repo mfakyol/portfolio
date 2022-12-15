@@ -1,12 +1,12 @@
 [
   {
     "label": "github",
-    "iconSrc": "/images/connects/github.svg",
+    "iconSrc": "/images/social/github.svg",
     "href": "https://github.com/mfakyol"
   },
   {
     "label": "linkedin",
-    "iconSrc": "/images/connects/linkedin.svg",
+    "iconSrc": "/images/social/linkedin.svg",
     "href": "https://www.linkedin.com/in/fatih-akyol-844701183/"
   }
  

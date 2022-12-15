@@ -20,7 +20,7 @@
       display: block;
       font-size: 20px;
       flex-grow: 1;
-      margin-right: 48px;
+   
       width: 50%;
 
       & > .contactButton {
@@ -36,8 +36,6 @@
         cursor: pointer;
         margin-left: auto;
         transition: transform 0.3s;
- 
- 
 
         &:hover {
           box-shadow: 0px 18px 25px -10px rgba(35, 35, 35, 0.35);
@@ -46,18 +44,15 @@
       }
     }
 
-    & > .aboutMeArticleImageWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    & > .aboutMeArticleImage {
       width: 50%;
 
-      & > .aboutMeArticleImage {
-        height: fit-content;
-        max-width: 350px;
+      border-radius: 6px;
+      flex-grow: 1;
+      margin-left: 48px;
 
-        border-radius: 6px;
-        flex-grow: 1;
+      @media (max-width:767px) {
+          display: none;
       }
     }
   }

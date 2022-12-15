@@ -1,0 +1,31 @@
+.wrapper {
+  width: 100%;
+  margin-bottom: 24px;
+
+  & > .textarea {
+    width: 100%;
+    resize: vertical;
+    border-radius: 5px;
+    border: 1px solid var(--input-border-color);
+    outline-color: var(--blue);
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Inter";
+    padding: 16px;
+    height: 200px;
+
+    &:not(:focus).error {
+      border-color: var(--red);
+    }
+
+    &:focus {
+      outline: 2px solid var(--blue) !important;
+    }
+  }
+
+  & > .errorText {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--red);
+  }
+}

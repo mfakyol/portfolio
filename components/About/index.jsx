@@ -4,10 +4,9 @@ import classes from "./style.module.scss";
 function About() {
   const t = useTranslation();
 
-
-const handleOnClick = () => {
-  document.querySelector("#contact").scrollIntoView({behavior: "smooth" });
-}
+  const handleOnClick = () => {
+    document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="about" inpagescroll="" className={classes.aboutSection}>
@@ -17,11 +16,12 @@ const handleOnClick = () => {
         <article className={classes.aboutMeArticle}>
           {t("about_me_article")}
           <br />
-          <button className={classes.contactButton} onClick={() => handleOnClick()}>{t("contact_with_me")}</button>
+          <button className={classes.contactButton} onClick={() => handleOnClick()}>
+            {t("contact_with_me")}
+          </button>
         </article>
-        <div className={classes.aboutMeArticleImageWrapper} >
-        <img className={classes.aboutMeArticleImage} src="/images/man-developing-website-on-desk.svg" alt="" />
-        </div>
+
+        <img className={classes.aboutMeArticleImage} src="/images/about-me.svg" alt="" />
       </div>
     </section>
   );

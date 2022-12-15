@@ -1,82 +1,106 @@
-import Head from "next/head";
-import Link from "next/link";
-import Script from "next/script";
-import { useEffect, useRef, useState } from "react";
-import useTranslation from "store/LangContext";
-import classes from "./style.module.scss";
-import connects from "@constants/connects";
+import dynamic from "next/dynamic";
+import Label from "@components/Label";
 import { useRouter } from "next/router";
+import classes from "./style.module.scss";
+import TextArea from "@components/Textarea";
+import TextInput from "@components/TextInput";
+import useTranslation from "store/LangContext";
+import { useCallback, useRef, useState } from "react";
+import { sendForm } from "@emailjs/browser";
 
 function Contact() {
   const router = useRouter();
+
+  const formRef = useRef();
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const subjectInputRef = useRef();
   const messageInputRef = useRef();
 
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [subjectError, setSubjectError] = useState("");
+  const [messageError, setMessageError] = useState("");
+
   const t = useTranslation();
-  const [initScript, setInitScript] = useState(false);
-  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
-  useEffect(() => {
-    setInitScript(true);
-  }, []);
+
+  const handleOnSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const name = nameInputRef.current.value;
+      const email = emailInputRef.current.value;
+      const subject = subjectInputRef.current.value;
+      const message = messageInputRef.current.value;
+
+      let isValid = true;
+      if (!name) {
+        setNameError(t("name_required"));
+        isValid = false;
+      }
+      if (!email) {
+        setEmailError(t("email_required"));
+        isValid = false;
+      }
+      if (!subject) {
+        setSubjectError(t("subject_required"));
+        isValid = false;
+      }
+      if (!message) {
+        setMessageError(t("message_required"));
+        isValid = false;
+      }
+
+      if (isValid) {
+        sendForm("service_xjgjpqj", "portfolio_contact", formRef.current, "B0hRDPxNxHMLim6g1").then((res) => {
+          if (res.status == 200) {
+            nameInputRef.current.value = "";
+            emailInputRef.current.value = "";
+            subjectInputRef.current.value = "";
+            messageInputRef.current.value = "";
+            // will show success alert
+          } else {
+            // will show error alert
+          }
+        });
+      }
+    },
+    [t]
+  );
 
   return (
     <>
-      {initScript && (
-        <Script
-          onLoad={() => setIsScriptLoaded(true)}
-          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-        />
-      )}
-
       <section id="contact" className={classes.contactSection} inpagescroll="">
         <h2 className={classes.title}>{t("contact").toLocaleCapitalCase(router.locale)}</h2>
         <div className={classes.contactWrapper}>
-          <div className={classes.infoContainer}>
-            <img className={classes.infoImage} src="/images/computer.jpg" alt="" />
+          <img src="/images/contact.svg" alt="" className={classes.contactImage} />
 
-            <p className={classes.infoName}>Fatih AKYOL</p>
-            <p className={classes.infoJob}>Frontend Developer</p>
-            <p className={classes.infoText}>
-              {"I am available for freelance or full-time positions. Contact me and let's talk."}
-            </p>
-
-            <p className={classes.connectTitle}>{t("socials").toLocaleUpperCase(router.locale)}</p>
-            <ul className={classes.connectList}>
-              {connects.map((connect, index) => (
-                <li key={index} className={classes.connectItem}>
-                  <Link href={connect.href}>
-                    <a className={classes.connectItemContent} rel="noopener noreferrer" target="_black">
-                      <img src={connect.iconSrc} alt={connect.label} />
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <form className={classes.contactForm}>
+          <form ref={formRef} className={classes.contactForm} onSubmit={handleOnSubmit}>
             <h3 className={classes.contactTitle}>{t("contact_with_me").toLocaleUpperCase(router.locale)}</h3>
 
-            <label htmlFor="name" className={classes.label}>
-              {t("name").toLocaleCapitalCase(router.locale)}
-            </label>
-            <input ref={nameInputRef} className={classes.input} type="text" name="name" id="name" />
+            <Label htmlFor="name">{t("name").toLocaleCapitalCase(router.locale)}</Label>
+            <TextInput ref={nameInputRef} name="name" id="name" error={nameError} setError={setNameError} />
 
-            <label htmlFor="email" className={classes.label}>
-              {t("email").toLocaleCapitalCase(router.locale)}
-            </label>
-            <input ref={emailInputRef} className={classes.input} type="text" name="email" id="email" />
+            <Label htmlFor="email">{t("email").toLocaleCapitalCase(router.locale)}</Label>
+            <TextInput ref={emailInputRef} name="email" id="email" error={emailError} setError={setEmailError} />
 
-            <label htmlFor="subject" className={classes.label}>
-              {t("subject").toLocaleCapitalCase(router.locale)}
-            </label>
-            <input ref={subjectInputRef} className={classes.input} type="text" name="subject" id="subject" />
+            <Label htmlFor="subject"> {t("subject").toLocaleCapitalCase(router.locale)}</Label>
+            <TextInput
+              ref={subjectInputRef}
+              name="subject"
+              id="subject"
+              error={subjectError}
+              setError={setSubjectError}
+            />
 
-            <label htmlFor="message" className={classes.label}>
-              {t("message").toLocaleCapitalCase(router.locale)}
-            </label>
-            <textarea ref={messageInputRef} className={classes.textarea} name="message" id="message"></textarea>
+            <Label htmlFor="message">{t("message").toLocaleCapitalCase(router.locale)}</Label>
+            <TextArea
+              ref={messageInputRef}
+              name="message"
+              id="message"
+              error={messageError}
+              setError={setMessageError}
+            />
+
             <button className={classes.submitButton}>{t("submit").toLocaleCapitalCase(router.locale)}</button>
           </form>
         </div>

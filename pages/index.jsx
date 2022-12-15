@@ -4,10 +4,12 @@ import Skills from "@components/Skills";
 import Contact from "@components/Contact";
 import Projects from "@components/Projects";
 import MainLayout from "../layouts/MainLayout";
+import Social from "@components/Social";
 
 export default function Index() {
   return (
     <main id="main">
+      <Social/>
       <Home />
       <About />
       <Skills />

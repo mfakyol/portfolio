@@ -25,7 +25,11 @@
     "home_title_3": "Frontend Developer.",
     "slogan": "Web developer from Istanbul, Turkey. I create custom websites to help your businnesses do better.",
     "about_me": "About Me",
-    "about_me_article": "Hello, I'm Fatih, a frontend developer. I live in Istanbul. I love turning creative designs into accessible, user-friendly and interactive applications. I love following and experimenting with current technologies. Seeing the results of my projects motivates me to do more. I can't wait to meet you, feel free to contact me."
+    "about_me_article": "Hello, I'm Fatih, a frontend developer. I live in Istanbul. I love turning creative designs into accessible, user-friendly and interactive applications. I love following and experimenting with current technologies. Seeing the results of my projects motivates me to do more. I can't wait to meet you, feel free to contact me.",
+    "name_required": "Name required.",
+    "email_required": "Email required.",
+    "subject_required": "Subject required.",
+    "message_required": "Message required."
   },
   "tr": {
     "home": "ana sayfa",
@@ -53,6 +57,10 @@
     "home_title_3": "Frontend geliştiricisiyim.",
     "slogan": "İstanbul, Türkiye'den web geliştiricisi. İşletmelerinizin daha iyisini yapmasına yardımcı olmak için özel web siteleri oluşturuyorum.",
     "about_me": "Hakkımda",
-    "about_me_article": "Merhaba , ben Fatih, bir frontend geliştiriciyim. İstanbul'da yaşıyorum. Yaratıcı tasarımları erişilebilir kullanıcı dostu ve interaktif uygulamalara dönüştürmeyi seviyorum. Güncel teknolojileri takip etmeyi ve bu teknolojileri deneme bayılıyorum. Yaptığım projelerin sonuçlarını görmek beni daha fazlası için motive ediyor. Sizinle tanışmak için sabırsızlanıyorum. Benimle iletişim kurmaktan çekinmeyin."
+    "about_me_article": "Merhaba , ben Fatih, bir frontend geliştiriciyim. İstanbul'da yaşıyorum. Yaratıcı tasarımları erişilebilir kullanıcı dostu ve interaktif uygulamalara dönüştürmeyi seviyorum. Güncel teknolojileri takip etmeyi ve bu teknolojileri deneme bayılıyorum. Yaptığım projelerin sonuçlarını görmek beni daha fazlası için motive ediyor. Sizinle tanışmak için sabırsızlanıyorum. Benimle iletişim kurmaktan çekinmeyin.",
+    "name_required": "İsim boş bırakılamaz.",
+    "email_required": "Email boş bırakılamaz.",
+    "subject_required": "Başlık boş bırakılamaz.",
+    "message_required": "Mesaj boş bırakılamaz."
   }
 }

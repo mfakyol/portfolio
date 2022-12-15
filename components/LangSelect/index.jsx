@@ -9,7 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const langs = Object.keys(translations);
 
-function LangSelect({className=""}) {
+function LangSelect({ className = "" }) {
   const ref = useRef();
   const router = useRouter();
   const t = useTranslation();
@@ -35,20 +35,21 @@ function LangSelect({className=""}) {
   return (
     <div className={`${classes.langSelect} ${className}`}>
       <div className={classes.selectedLang} onClick={() => setIsOpen((prev) => !prev)}>
-        <GlobeIcon className={classes.globeIcon} /> <span className={classes.selectedLangText}>{router.locale.toLocaleUpperCase()}</span>
+        <GlobeIcon className={classes.globeIcon} />{" "}
+        <span className={classes.selectedLangText}>{router.locale.toLocaleUpperCase()}</span>
       </div>
       <ul ref={ref} className={`${classes.langList} ${isOpen ? classes.show : ""}`}>
         {langs.map((lang) => (
           <li key={lang} className={`${classes.langItem} ${router.locale == lang ? classes.selected : ""}`}>
-            <Link href={router.asPath} locale={lang}>
-              <a
-                className={classes.langItemContent}
-                onClick={() => {
-                  setIsOpen(false);
-                }}
-              >
-                {t(lang)}
-              </a>
+            <Link
+              href={router.asPath}
+              locale={lang}
+              className={classes.langItemContent}
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              {t(lang)}
             </Link>
           </li>
         ))}
