@@ -12,11 +12,11 @@ function Projects() {
       <h2 className={classes.title}>{t("projects").toLocaleCapitalCase(router.locale)}</h2>
 
       <div className={classes.projects}>
-        <Link href="" className={classes.project}>
-          <img className={classes.projectImage} src="/images/test.png" alt="" />
+        <Link href="http://link.mfakyol.com" className={classes.project}>
+          <img className={classes.projectImage} src="/images/porjects/link.png" alt="" />
 
           <div className={classes.projectOverlay}>
-            <h3 className={classes.projectTitle}>Project title</h3>
+            <h3 className={classes.projectTitle}>Link Share</h3>
             <p className={classes.projectTechnology}>Next.js</p>
 
             <span className={classes.seeMore}>{t("see_more")}</span>
