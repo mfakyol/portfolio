@@ -13,7 +13,7 @@ function Projects() {
 
       <div className={classes.projects}>
         <Link href="http://link.mfakyol.com" className={classes.project}>
-          <img className={classes.projectImage} src="/images/porjects/link.png" alt="" />
+          <img className={classes.projectImage} src="/images/projects/link.png" alt="" />
 
           <div className={classes.projectOverlay}>
             <h3 className={classes.projectTitle}>Link Share</h3>
