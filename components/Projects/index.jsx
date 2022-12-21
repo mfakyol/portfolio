@@ -22,12 +22,12 @@ function Projects() {
             <span className={classes.seeMore}>{t("see_more")}</span>
           </div>
         </Link>
-        <Link href="" className={classes.project}>
-          <img className={classes.projectImage} src="/images/test.png" alt="" />
+        <Link href="http://short.mfakyol.com" className={classes.project}>
+          <img className={classes.projectImage} src="/images/projects/short.png" alt="" />
 
           <div className={classes.projectOverlay}>
-            <h3 className={classes.projectTitle}>Project title</h3>
-            <p className={classes.projectTechnology}>Next.js</p>
+            <h3 className={classes.projectTitle}>Url Shortener</h3>
+            <p className={classes.projectTechnology}>Node.js(Express)</p>
 
             <span className={classes.seeMore}>{t("see_more")}</span>
           </div>
