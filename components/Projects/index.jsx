@@ -32,12 +32,12 @@ function Projects() {
             <span className={classes.seeMore}>{t("see_more")}</span>
           </div>
         </Link>
-        <Link href="" className={classes.project}>
-          <img className={classes.projectImage} src="/images/test.png" alt="" />
+        <Link href="http://2048.mfakyol.com" className={classes.project}>
+          <img className={classes.projectImage} src="/images/2048.png" alt="" />
 
           <div className={classes.projectOverlay}>
-            <h3 className={classes.projectTitle}>Project title</h3>
-            <p className={classes.projectTechnology}>Next.js</p>
+            <h3 className={classes.projectTitle}>2048</h3>
+            <p className={classes.projectTechnology}>Javascript (webpack)</p>
 
             <span className={classes.seeMore}>{t("see_more")}</span>
           </div>
