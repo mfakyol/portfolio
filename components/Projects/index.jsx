@@ -33,7 +33,7 @@ function Projects() {
           </div>
         </Link>
         <Link href="http://2048.mfakyol.com" className={classes.project}>
-          <img className={classes.projectImage} src="/images/2048.png" alt="" />
+          <img className={classes.projectImage} src="/images/projects/2048.png" alt="" />
 
           <div className={classes.projectOverlay}>
             <h3 className={classes.projectTitle}>2048</h3>
