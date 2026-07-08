@@ -122,6 +122,19 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/mfakyol/chatapp",
   },
   {
+    name: "Meet",
+    tagline: {
+      tr: "Tarayıcıda görüntülü görüşme",
+      en: "Browser video calls",
+    },
+    description: {
+      tr: "Zoom benzeri görüntülü konferans: mesh WebRTC (P2P — medya sunucuya uğramaz) + Socket.io sinyalleşme. Oda linki paylaş, hesapsız katıl; kamera/mikrofon, ekran paylaşımı ve canlı sohbet.",
+      en: "A Zoom-like video conferencing app: mesh WebRTC (P2P — media never touches the server) + Socket.io signaling. Share a room link, join without accounts; camera/mic, screen sharing and live chat.",
+    },
+    tech: ["React", "Vite", "TypeScript", "WebRTC", "Socket.io", "Express"],
+    live: "https://meet.fatihakyol.com",
+  },
+  {
     name: "Code Editor",
     tagline: {
       tr: "Tarayıcıda kod deneme alanı",
@@ -167,7 +180,7 @@ export const PROJECTS: Project[] = [
 // ---- Stats ----
 export const STATS: { value: string; label: Record<Locale, string> }[] = [
   { value: "5+", label: { tr: "Yıl deneyim", en: "Years experience" } },
-  { value: "5", label: { tr: "Canlı proje", en: "Live projects" } },
+  { value: "6", label: { tr: "Canlı proje", en: "Live projects" } },
   { value: "∞", label: { tr: "Kahve", en: "Coffee" } },
 ];
 
