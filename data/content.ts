@@ -133,6 +133,7 @@ export const PROJECTS: Project[] = [
     },
     tech: ["React", "Vite", "TypeScript", "WebRTC", "Socket.io", "Express"],
     live: "https://meet.fatihakyol.com",
+    repo: "https://github.com/mfakyol/meet",
   },
   {
     name: "Code Editor",
@@ -160,6 +161,7 @@ export const PROJECTS: Project[] = [
     },
     tech: ["React", "Vite", "TypeScript", "react-konva", "Socket.io", "Express", "MongoDB"],
     live: "https://draw.fatihakyol.com",
+    repo: "https://github.com/mfakyol/whiteboard",
   },
   {
     name: "Links",
