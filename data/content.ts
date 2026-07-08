@@ -220,6 +220,26 @@ export const EXPERIENCE: Experience[] = [
   },
 ];
 
+// ---- Education ----
+export interface Education {
+  school: string;
+  degree: Record<Locale, string>;
+  period: string;
+  location: string;
+}
+
+export const EDUCATION: Education[] = [
+  {
+    school: "Erciyes Üniversitesi",
+    degree: {
+      tr: "Bilgisayar Mühendisliği (Lisans)",
+      en: "Computer Engineering (BSc)",
+    },
+    period: "2015 — 2021",
+    location: "Kayseri",
+  },
+];
+
 // ---- UI strings ----
 export const UI: Record<Locale, Record<string, string>> = {
   tr: {
@@ -236,6 +256,7 @@ export const UI: Record<Locale, Record<string, string>> = {
     "about.p2": "Full-stack tarafında Node.js, Express, MongoDB ve Socket.io ile uçtan uca ürünler geliştirip Docker + nginx ile kendi sunucuma deploy ediyorum. Aşağıdaki projelerin tamamı canlıda ve kendi altyapımda çalışıyor.",
     "experience.title": "Deneyim",
     "experience.sub": "Profesyonel çalışma geçmişim.",
+    "experience.education": "Eğitim",
     "skills.title": "Yetenekler",
     "skills.sub": "Kullandığım teknolojiler ve araçlar.",
     "projects.title": "Projeler",
@@ -262,6 +283,7 @@ export const UI: Record<Locale, Record<string, string>> = {
     "about.p2": "On the full-stack side I build end-to-end products with Node.js, Express, MongoDB and Socket.io, then ship them to my own server with Docker + nginx. Every project below is live and running on my own infrastructure.",
     "experience.title": "Experience",
     "experience.sub": "My professional work history.",
+    "experience.education": "Education",
     "skills.title": "Skills",
     "skills.sub": "Technologies and tools I work with.",
     "projects.title": "Projects",

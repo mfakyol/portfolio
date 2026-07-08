@@ -1,7 +1,7 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n";
-import { EXPERIENCE } from "@/data/content";
+import { EXPERIENCE, EDUCATION } from "@/data/content";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -59,6 +59,27 @@ export function Experience() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.05}>
+          <h3 className="mb-4 mt-12 text-sm font-semibold uppercase tracking-wide text-muted">
+            {t("experience.education")}
+          </h3>
+          <div className="space-y-4">
+            {EDUCATION.map((e) => (
+              <div
+                key={e.school}
+                className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-2xl border border-border bg-surface/60 p-6"
+              >
+                <div>
+                  <h4 className="font-bold">{e.school}</h4>
+                  <p className="text-sm text-accent">{e.degree[locale]}</p>
+                  <p className="text-sm text-muted">{e.location}</p>
+                </div>
+                <span className="font-mono text-sm text-muted">{e.period}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
