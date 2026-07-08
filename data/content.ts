@@ -175,12 +175,26 @@ export const PROJECTS: Project[] = [
     live: "https://links.fatihakyol.com",
     repo: "https://github.com/mfakyol/links",
   },
+  {
+    name: "Lynx",
+    tagline: {
+      tr: "URL kısaltıcı + analitik",
+      en: "URL shortener with analytics",
+    },
+    description: {
+      tr: "Kimlik doğrulamalı panelle kısa linkler oluştur ve tıklama analitiğini incele: zaman aralıkları, grafikler, coğrafya haritası ve cihaz kırılımı. React/Vite SPA + Express API + MongoDB.",
+      en: "Create short links from an authenticated dashboard and review click analytics: time ranges, charts, a world map and device breakdown. React/Vite SPA + Express API + MongoDB.",
+    },
+    tech: ["React", "Vite", "TypeScript", "Zustand", "Recharts", "Express", "MongoDB"],
+    live: "https://lynx.fatihakyol.com",
+    repo: "https://github.com/mfakyol/lynx",
+  },
 ];
 
 // ---- Stats ----
 export const STATS: { value: string; label: Record<Locale, string> }[] = [
   { value: "5+", label: { tr: "Yıl deneyim", en: "Years experience" } },
-  { value: "6", label: { tr: "Canlı proje", en: "Live projects" } },
+  { value: "7", label: { tr: "Canlı proje", en: "Live projects" } },
   { value: "∞", label: { tr: "Kahve", en: "Coffee" } },
 ];
 
