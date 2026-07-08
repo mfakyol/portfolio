@@ -14,7 +14,7 @@ export function Projects() {
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <SectionHeading
-            index="03"
+            index="04"
             title={t("projects.title")}
             sub={t("projects.sub")}
           />

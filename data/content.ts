@@ -28,6 +28,8 @@ export const SKILLS: SkillGroup[] = [
     items: [
       "React",
       "Next.js",
+      "Angular",
+      "AngularJS",
       "TypeScript",
       "JavaScript (ES6+)",
       "HTML5",
@@ -53,7 +55,7 @@ export const SKILLS: SkillGroup[] = [
   },
   {
     title: { tr: "Backend", en: "Backend" },
-    items: ["Node.js", "Express", "MongoDB", "Mongoose", "Socket.io"],
+    items: ["Node.js", "Express", "MongoDB", "Mongoose", "Socket.io", "SignalR"],
   },
   {
     title: { tr: "Test & Kalite", en: "Testing & Quality" },
@@ -169,10 +171,60 @@ export const STATS: { value: string; label: Record<Locale, string> }[] = [
   { value: "∞", label: { tr: "Kahve", en: "Coffee" } },
 ];
 
+// ---- Experience ----
+export interface Experience {
+  company: string;
+  role: Record<Locale, string>;
+  period: Record<Locale, string>;
+  location: string;
+  bullets: Record<Locale, string[]>;
+  tech: string[];
+}
+
+export const EXPERIENCE: Experience[] = [
+  {
+    company: "naxxt software",
+    role: {
+      tr: "Mid / Senior Frontend Developer",
+      en: "Mid / Senior Frontend Developer",
+    },
+    period: { tr: "Mart 2021 — Devam ediyor", en: "Mar 2021 — Present" },
+    location: "İstanbul",
+    bullets: {
+      tr: [
+        "React ve Next.js ile web uygulamaları geliştirdim; mevcut ürünlerde Angular ve AngularJS ile de çalıştım.",
+        "TypeScript ile yeniden kullanılabilir UI bileşen sistemleri kurdum, Figma tasarımlarını responsive ve erişilebilir arayüzlere çevirdim.",
+        "REST API entegrasyonları ve gerçek zamanlı özellikler (Socket.io, SignalR) geliştirdim; Node.js / Express / MongoDB ile uçtan uca çalıştım.",
+        "Performans, kod kalitesi ve deploy süreçlerine katkı sağladım.",
+      ],
+      en: [
+        "Built web applications with React and Next.js; also worked with Angular and AngularJS on existing products.",
+        "Created reusable UI component systems in TypeScript and turned Figma designs into responsive, accessible interfaces.",
+        "Developed REST API integrations and real-time features (Socket.io, SignalR); worked end-to-end with Node.js / Express / MongoDB.",
+        "Contributed to performance, code quality and deployment.",
+      ],
+    },
+    tech: [
+      "React",
+      "Next.js",
+      "Angular",
+      "AngularJS",
+      "TypeScript",
+      "Figma",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Socket.io",
+      "SignalR",
+    ],
+  },
+];
+
 // ---- UI strings ----
 export const UI: Record<Locale, Record<string, string>> = {
   tr: {
     "nav.about": "Hakkımda",
+    "nav.experience": "Deneyim",
     "nav.skills": "Yetenekler",
     "nav.projects": "Projeler",
     "nav.contact": "İletişim",
@@ -182,6 +234,8 @@ export const UI: Record<Locale, Record<string, string>> = {
     "about.title": "Hakkımda",
     "about.p1": "5+ yıldır web arayüzleri geliştiren bir Frontend Developer'ım. React ve Next.js ekosisteminde, performanslı ve bakımı kolay uygulamalar kurmaya odaklanıyorum.",
     "about.p2": "Full-stack tarafında Node.js, Express, MongoDB ve Socket.io ile uçtan uca ürünler geliştirip Docker + nginx ile kendi sunucuma deploy ediyorum. Aşağıdaki projelerin tamamı canlıda ve kendi altyapımda çalışıyor.",
+    "experience.title": "Deneyim",
+    "experience.sub": "Profesyonel çalışma geçmişim.",
     "skills.title": "Yetenekler",
     "skills.sub": "Kullandığım teknolojiler ve araçlar.",
     "projects.title": "Projeler",
@@ -196,6 +250,7 @@ export const UI: Record<Locale, Record<string, string>> = {
   },
   en: {
     "nav.about": "About",
+    "nav.experience": "Experience",
     "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
@@ -205,6 +260,8 @@ export const UI: Record<Locale, Record<string, string>> = {
     "about.title": "About",
     "about.p1": "I'm a Frontend Developer with 5+ years of experience building web interfaces. I focus on performant, maintainable apps in the React and Next.js ecosystem.",
     "about.p2": "On the full-stack side I build end-to-end products with Node.js, Express, MongoDB and Socket.io, then ship them to my own server with Docker + nginx. Every project below is live and running on my own infrastructure.",
+    "experience.title": "Experience",
+    "experience.sub": "My professional work history.",
     "skills.title": "Skills",
     "skills.sub": "Technologies and tools I work with.",
     "projects.title": "Projects",

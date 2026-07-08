@@ -12,7 +12,7 @@ export function Skills() {
     <section id="skills" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionHeading index="02" title={t("skills.title")} sub={t("skills.sub")} />
+          <SectionHeading index="03" title={t("skills.title")} sub={t("skills.sub")} />
         </Reveal>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

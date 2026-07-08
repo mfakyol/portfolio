@@ -13,7 +13,7 @@ export function Contact() {
     <section id="contact" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionHeading index="04" title={t("contact.title")} sub={t("contact.sub")} />
+          <SectionHeading index="05" title={t("contact.title")} sub={t("contact.sub")} />
         </Reveal>
 
         <Reveal delay={0.05}>

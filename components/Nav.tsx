@@ -6,6 +6,7 @@ import { NAME } from "@/data/content";
 
 const LINKS = [
   { href: "#about", key: "nav.about" },
+  { href: "#experience", key: "nav.experience" },
   { href: "#skills", key: "nav.skills" },
   { href: "#projects", key: "nav.projects" },
   { href: "#contact", key: "nav.contact" },
