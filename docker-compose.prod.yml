@@ -1,0 +1,13 @@
+# Production stack — a static Next.js portfolio behind the host's nginx.
+#
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Published on 127.0.0.1:8085 only; the host nginx terminates TLS for
+# fatihakyol.com and reverse-proxies to that port.
+
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8085:3000"
+    restart: unless-stopped

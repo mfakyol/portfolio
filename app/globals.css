@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0b0f;
+  --color-surface: #12141b;
+  --color-surface-2: #191c25;
+  --color-border: #262b38;
+  --color-border-strong: #333a4a;
+  --color-text: #e9edf5;
+  --color-muted: #99a1b3;
+  --color-accent: #6366f1;
+  --color-accent-2: #a855f7;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(1000px 600px at 100% -10%, rgba(168, 85, 247, 0.12), transparent 55%),
+    radial-gradient(1000px 600px at 0% -10%, rgba(99, 102, 241, 0.14), transparent 55%),
+    var(--color-bg);
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+/* Reusable helpers */
+.gradient-text {
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card-glow {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-glow:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 18px 40px -20px rgba(99, 102, 241, 0.45);
+}
+
+/* Thin scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+html {
+  scroll-behavior: smooth;
+}
