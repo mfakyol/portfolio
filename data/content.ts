@@ -4,8 +4,7 @@ export type Locale = "tr" | "en";
 export const NAME = "Fatih Akyol";
 export const EMAIL = "muhammedfatihakyol@gmail.com";
 export const GITHUB = "https://github.com/mfakyol";
-// TODO: gerçek LinkedIn adresini koy (yoksa Contact'tan kaldırılabilir).
-export const LINKEDIN = "https://www.linkedin.com/in/mfakyol";
+export const LINKEDIN = "https://www.linkedin.com/in/fatih-akyol-844701183/";
 
 export const ROLE: Record<Locale, string> = {
   tr: "Frontend Developer",
