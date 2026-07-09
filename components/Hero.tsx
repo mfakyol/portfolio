@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
+import dynamic from "next/dynamic";
 import { useI18n } from "@/lib/i18n";
 import { NAME, ROLE, TAGLINE, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
 import { GitHubIcon, MailIcon, LinkedInIcon } from "./icons";
+
+// WebGL background — client only.
+const Aurora = dynamic(() => import("./Aurora"), { ssr: false });
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -15,7 +19,19 @@ export function Hero() {
   const { t, locale } = useI18n();
 
   return (
-    <section id="top" className="relative flex min-h-svh items-center px-5 pt-16">
+    <section id="top" className="relative flex min-h-svh items-center overflow-hidden px-5 pt-16">
+      {/* Aurora background (React Bits) */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-x-0 -top-32 h-[85%] opacity-70 [mask-image:linear-gradient(to_bottom,black_25%,transparent)]">
+          <Aurora
+            colorStops={["#6366f1", "#a855f7", "#6366f1"]}
+            amplitude={1.1}
+            blend={0.55}
+            speed={0.4}
+          />
+        </div>
+      </div>
+
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           {...fade(0)}
