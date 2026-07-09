@@ -6,6 +6,7 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { ArrowIcon, CodeIcon } from "./icons";
 import ScrollStack, { ScrollStackItem } from "./ScrollStack";
+import { GlowCard } from "./GlowCard";
 
 export function Projects() {
   const { t, locale } = useI18n();
@@ -24,10 +25,8 @@ export function Projects() {
         <div className="h-[80vh] w-full">
           <ScrollStack>
             {PROJECTS.map((p, i) => (
-              <ScrollStackItem
-                key={p.name}
-                itemClassName="flex min-h-[360px] flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.8)] sm:p-10"
-              >
+              <ScrollStackItem key={p.name}>
+                <GlowCard className="flex min-h-[360px] flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.8)] sm:p-10">
                 <div>
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -88,7 +87,7 @@ export function Projects() {
                         href={p.live}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-transform hover:-translate-y-0.5"
+                        className="glow-btn inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
                       >
                         {t("projects.live")} <ArrowIcon width={14} height={14} />
                       </a>
@@ -98,13 +97,14 @@ export function Projects() {
                         href={p.repo}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-surface-2 px-4 py-2.5 text-sm font-semibold text-text transition-colors hover:border-border-strong"
+                        className="glow-btn inline-flex items-center gap-1.5 rounded-xl border border-border bg-surface-2 px-4 py-2.5 text-sm font-semibold text-text hover:border-border-strong"
                       >
                         <CodeIcon width={14} height={14} /> {t("projects.code")}
                       </a>
                     )}
                   </div>
                 </div>
+                </GlowCard>
               </ScrollStackItem>
             ))}
           </ScrollStack>

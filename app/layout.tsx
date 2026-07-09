@@ -4,6 +4,7 @@ import "./globals.css";
 import { I18nProvider } from "@/lib/i18n";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { Background } from "@/components/Background";
 import { NAME } from "@/data/content";
 
 const geistSans = Geist({
@@ -39,6 +40,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <Background />
         <I18nProvider>
           <Nav />
           <main className="flex-1">{children}</main>

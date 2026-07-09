@@ -1,13 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import dynamic from "next/dynamic";
 import { useI18n } from "@/lib/i18n";
 import { NAME, ROLE, TAGLINE, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
 import { GitHubIcon, MailIcon, LinkedInIcon } from "./icons";
-
-// WebGL background — client only.
-const Aurora = dynamic(() => import("./Aurora"), { ssr: false });
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -19,19 +15,7 @@ export function Hero() {
   const { t, locale } = useI18n();
 
   return (
-    <section id="top" className="relative flex min-h-svh items-center overflow-hidden px-5 pt-16">
-      {/* Aurora background (React Bits) */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-x-0 -top-32 h-[85%] opacity-70 [mask-image:linear-gradient(to_bottom,black_25%,transparent)]">
-          <Aurora
-            colorStops={["#6366f1", "#a855f7", "#6366f1"]}
-            amplitude={1.1}
-            blend={0.55}
-            speed={0.4}
-          />
-        </div>
-      </div>
-
+    <section id="top" className="relative flex min-h-svh items-center px-5 pt-16">
       <div className="mx-auto w-full max-w-5xl">
         <motion.span
           {...fade(0)}
@@ -68,13 +52,13 @@ export function Hero() {
         <motion.div {...fade(0.32)} className="mt-8 flex flex-wrap items-center gap-3">
           <a
             href="#projects"
-            className="rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-transform hover:-translate-y-0.5"
+            className="glow-btn rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
           >
             {t("hero.cta.projects")}
           </a>
           <a
             href="#contact"
-            className="rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-text transition-colors hover:border-border-strong"
+            className="glow-btn rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-text hover:border-border-strong"
           >
             {t("hero.cta.contact")}
           </a>

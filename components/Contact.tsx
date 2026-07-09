@@ -28,7 +28,7 @@ export function Contact() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href={`mailto:${EMAIL}`}
-                className="rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-transform hover:-translate-y-0.5"
+                className="glow-btn rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
               >
                 {t("contact.email")}
               </a>
