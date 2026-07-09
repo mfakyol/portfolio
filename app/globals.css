@@ -108,6 +108,30 @@ body {
   }
 }
 
+/* Shiny text (React Bits) — a bright band sweeps across the text */
+.shiny-text {
+  background: linear-gradient(
+    120deg,
+    var(--color-muted) 38%,
+    #f4f6fb 50%,
+    var(--color-muted) 62%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
 /* Typewriter caret */
 @keyframes blink {
   0%,

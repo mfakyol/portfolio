@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n";
 import { NAME, ROLE, TAGLINES, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
 import { GitHubIcon, MailIcon, LinkedInIcon } from "./icons";
 import { Typewriter } from "./Typewriter";
+import { ShinyText } from "./ShinyText";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -38,9 +39,9 @@ export function Hero() {
 
         <motion.p
           {...fade(0.16)}
-          className="mt-4 text-xl font-semibold text-muted sm:text-2xl"
+          className="mt-4 text-xl font-semibold sm:text-2xl"
         >
-          {ROLE[locale]}
+          <ShinyText text={ROLE[locale]} />
         </motion.p>
 
         <motion.p
