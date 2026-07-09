@@ -2,21 +2,26 @@
 
 import dynamic from "next/dynamic";
 
-// WebGL Aurora — client only.
-const Aurora = dynamic(() => import("./Aurora"), { ssr: false });
+// WebGL Side Rays — client only.
+const SideRays = dynamic(() => import("./SideRays"), { ssr: false });
 
-// Fixed, full-viewport aurora that stays visible while scrolling.
+// Fixed, full-viewport rays that stay visible while scrolling.
 export function Background() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div className="absolute inset-x-0 -top-32 h-[95vh] opacity-85 [mask-image:linear-gradient(to_bottom,black_30%,transparent)]">
-        <Aurora
-          colorStops={["#6366f1", "#a855f7", "#6366f1"]}
-          amplitude={1.2}
-          blend={0.5}
-          speed={0.6}
-        />
-      </div>
+    <div className="pointer-events-none fixed inset-0 -z-10">
+      <SideRays
+        origin="top-right"
+        rayColor1="#a855f7"
+        rayColor2="#6366f1"
+        speed={2}
+        intensity={1.3}
+        spread={2}
+        tilt={0}
+        saturation={1.2}
+        blend={0.6}
+        falloff={2.0}
+        opacity={0.7}
+      />
     </div>
   );
 }
