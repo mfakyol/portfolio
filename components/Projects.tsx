@@ -5,7 +5,6 @@ import { PROJECTS } from "@/data/content";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { ArrowIcon, CodeIcon } from "./icons";
-import ScrollStack, { ScrollStackItem } from "./ScrollStack";
 import { GlowCard } from "./GlowCard";
 
 export function Projects() {
@@ -22,11 +21,15 @@ export function Projects() {
           />
         </Reveal>
 
-        <div className="h-[80vh] w-full">
-          <ScrollStack>
-            {PROJECTS.map((p, i) => (
-              <ScrollStackItem key={p.name}>
-                <GlowCard className="flex min-h-[360px] flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.8)] sm:p-10">
+        {/* Sticky stacking cards — driven by the normal page scroll. */}
+        <div className="mt-10">
+          {PROJECTS.map((p, i) => (
+            <div
+              key={p.name}
+              className="sticky pb-6"
+              style={{ top: `${96 + i * 16}px` }}
+            >
+              <GlowCard className="flex min-h-[340px] flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] sm:p-10">
                 <div>
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -104,10 +107,9 @@ export function Projects() {
                     )}
                   </div>
                 </div>
-                </GlowCard>
-              </ScrollStackItem>
-            ))}
-          </ScrollStack>
+              </GlowCard>
+            </div>
+          ))}
         </div>
       </div>
     </section>
