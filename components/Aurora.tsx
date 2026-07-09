@@ -6,11 +6,8 @@ import { Color, Mesh, Program, Renderer, Triangle } from "ogl";
 // Aurora background — adapted from React Bits (reactbits.dev), WebGL via ogl.
 
 const VERT = `#version 300 es
-in vec2 uv;
 in vec2 position;
-out vec2 vUv;
 void main() {
-  vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }`;
 
@@ -122,9 +119,6 @@ export default function Aurora({
     gl.canvas.style.backgroundColor = "transparent";
 
     const geometry = new Triangle(gl);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const attrs = geometry.attributes as any;
-    if (attrs.uv) delete attrs.uv;
 
     const toRGB = (hex: string) => {
       const c = new Color(hex);
