@@ -29,7 +29,7 @@ export function Projects() {
               className="sticky pb-6"
               style={{ top: `${96 + i * 16}px` }}
             >
-              <GlowCard className="flex min-h-[340px] flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] sm:p-10">
+              <GlowCard className="stack-card flex h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] sm:p-10">
                 <div>
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -67,7 +67,7 @@ export function Projects() {
                     </div>
                   </div>
 
-                  <p className="mt-5 max-w-2xl leading-relaxed text-muted">
+                  <p className="mt-5 line-clamp-3 max-w-2xl leading-relaxed text-muted">
                     {p.description[locale]}
                   </p>
                 </div>

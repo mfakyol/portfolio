@@ -89,6 +89,25 @@ body {
   box-shadow: 0 0 26px rgba(99, 102, 241, 0.55), 0 8px 20px -10px rgba(99, 102, 241, 0.6);
 }
 
+/* Sticky-stack cards shrink & dim as they get buried (scroll-driven).
+   Progressive enhancement — no effect where view() timelines are unsupported. */
+.stack-card {
+  transform-origin: top center;
+}
+@supports (animation-timeline: view()) {
+  .stack-card {
+    animation: card-bury linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 55%;
+  }
+}
+@keyframes card-bury {
+  to {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+}
+
 /* Thin scrollbar */
 * {
   scrollbar-width: thin;
