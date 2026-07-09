@@ -191,12 +191,26 @@ export const PROJECTS: Project[] = [
     live: "https://lynx.fatihakyol.com",
     repo: "https://github.com/mfakyol/lynx",
   },
+  {
+    name: "Typing Test",
+    tagline: {
+      tr: "Yazma hızı testi",
+      en: "Typing speed test",
+    },
+    description: {
+      tr: "Yazma hızını (WPM) ve doğruluğu ölçen bir test uygulaması; sonuçlar kaydedilir. React/Vite arayüz + Express/MongoDB API.",
+      en: "A typing speed test measuring words-per-minute and accuracy, with saved results. React/Vite front end + Express/MongoDB API.",
+    },
+    tech: ["React", "Vite", "TypeScript", "Tailwind CSS", "Express", "MongoDB"],
+    live: "https://typing.fatihakyol.com",
+    repo: "https://github.com/mfakyol/typing",
+  },
 ];
 
 // ---- Stats ----
 export const STATS: { value: string; label: Record<Locale, string> }[] = [
   { value: "5+", label: { tr: "Yıl deneyim", en: "Years experience" } },
-  { value: "7", label: { tr: "Canlı proje", en: "Live projects" } },
+  { value: "8", label: { tr: "Canlı proje", en: "Live projects" } },
   { value: "∞", label: { tr: "Kahve", en: "Coffee" } },
 ];
 
