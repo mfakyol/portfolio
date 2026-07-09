@@ -16,6 +16,24 @@ export const TAGLINE: Record<Locale, string> = {
   en: "I build modern, fast and accessible web interfaces.",
 };
 
+// Cycled with a typewriter effect in the hero.
+export const TAGLINES: Record<Locale, string[]> = {
+  tr: [
+    "Modern, hızlı ve erişilebilir web arayüzleri kuruyorum.",
+    "Figma tasarımlarını piksel-mükemmel arayüzlere çeviriyorum.",
+    "Ölçeklenen React & Next.js uygulamaları geliştiriyorum.",
+    "Gerçek zamanlı, Socket.io'lu deneyimler tasarlıyorum.",
+    "Docker & nginx ile full-stack ürünler yayına alıyorum.",
+  ],
+  en: [
+    "I build modern, fast and accessible web interfaces.",
+    "I turn Figma designs into pixel-perfect UIs.",
+    "I craft React & Next.js apps that scale.",
+    "I design realtime experiences with Socket.io.",
+    "I ship full-stack products with Docker & nginx.",
+  ],
+};
+
 // ---- Skills ----
 export interface SkillGroup {
   title: Record<Locale, string>;

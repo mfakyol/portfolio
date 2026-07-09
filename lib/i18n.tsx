@@ -19,23 +19,49 @@ interface I18nValue {
 
 const I18nContext = createContext<I18nValue | null>(null);
 
+function storedLocale(): Locale {
+  if (typeof window !== "undefined") {
+    const w = window as unknown as { __LOCALE__?: string };
+    if (w.__LOCALE__ === "tr" || w.__LOCALE__ === "en") return w.__LOCALE__;
+    try {
+      const s = localStorage.getItem("locale");
+      if (s === "tr" || s === "en") return s;
+    } catch {
+      /* ignore */
+    }
+  }
+  return "tr";
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
-  // Default "tr" on both server and first client render (no hydration mismatch);
-  // the stored preference is applied after mount.
+  // Server + first client render use the "tr" default (no hydration mismatch);
+  // the stored preference is applied on mount while the page is still hidden
+  // (via the i18n-pending class), so the switch is never visible.
   const [locale, setLocaleState] = useState<Locale>("tr");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("locale");
-    if (saved === "tr" || saved === "en") setLocaleState(saved);
+    const l = storedLocale();
+    if (l !== locale) setLocaleState(l);
+    setReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Reveal only after the correct-locale render has committed.
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+    if (ready) {
+      document.documentElement.lang = locale;
+      document.documentElement.classList.remove("i18n-pending");
+    }
+  }, [ready, locale]);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
-    localStorage.setItem("locale", l);
+    try {
+      localStorage.setItem("locale", l);
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   const toggle = useCallback(

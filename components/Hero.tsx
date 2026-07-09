@@ -2,8 +2,9 @@
 
 import { motion } from "motion/react";
 import { useI18n } from "@/lib/i18n";
-import { NAME, ROLE, TAGLINE, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
+import { NAME, ROLE, TAGLINES, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
 import { GitHubIcon, MailIcon, LinkedInIcon } from "./icons";
+import { Typewriter } from "./Typewriter";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -44,9 +45,9 @@ export function Hero() {
 
         <motion.p
           {...fade(0.24)}
-          className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+          className="mt-4 flex min-h-[3.5rem] max-w-xl items-start text-base leading-relaxed text-muted sm:min-h-[2rem] sm:text-lg"
         >
-          {TAGLINE[locale]}
+          <Typewriter phrases={TAGLINES[locale]} />
         </motion.p>
 
         <motion.div {...fade(0.32)} className="mt-8 flex flex-wrap items-center gap-3">
