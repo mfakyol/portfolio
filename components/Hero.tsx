@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useI18n } from "@/lib/i18n";
 import { NAME, ROLE, TAGLINES, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
-import { GitHubIcon, MailIcon, LinkedInIcon } from "./icons";
-import { Typewriter } from "./Typewriter";
-import { ShinyText } from "./ShinyText";
+import { GitHubIcon, MailIcon, LinkedInIcon } from "@/components/icons";
+import { Typewriter } from "@/components/Typewriter";
+import { ShinyText } from "@/components/ShinyText";
+import { t, type Locale } from "@/lib/i18n";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 22 },
@@ -13,9 +13,7 @@ const fade = (delay: number) => ({
   transition: { duration: 0.6, delay, ease: [0.4, 0, 0.2, 1] as const },
 });
 
-export function Hero() {
-  const { t, locale } = useI18n();
-
+export function Hero({ locale }: { locale: Locale }) {
   return (
     <section id="top" className="relative flex min-h-svh items-center px-5 pt-16">
       <div className="mx-auto w-full max-w-5xl">
@@ -27,7 +25,7 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
           </span>
-          {t("hero.available")}
+          {t(locale, "hero.available")}
         </motion.span>
 
         <motion.h1
@@ -56,13 +54,13 @@ export function Hero() {
             href="#projects"
             className="glow-btn rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
           >
-            {t("hero.cta.projects")}
+            {t(locale, "hero.cta.projects")}
           </a>
           <a
             href="#contact"
             className="glow-btn rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-text hover:border-border-strong"
           >
-            {t("hero.cta.contact")}
+            {t(locale, "hero.cta.contact")}
           </a>
         </motion.div>
 

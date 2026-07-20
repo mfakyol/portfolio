@@ -1,18 +1,14 @@
-"use client";
-
-import { useI18n } from "@/lib/i18n";
 import { SKILLS } from "@/data/content";
-import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
+import { t, type Locale } from "@/lib/i18n";
 
-export function Skills() {
-  const { t, locale } = useI18n();
-
+export function Skills({ locale }: { locale: Locale }) {
   return (
     <section id="skills" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionHeading index="03" title={t("skills.title")} sub={t("skills.sub")} />
+          <SectionHeading index="03" title={t(locale, "skills.title")} sub={t(locale, "skills.sub")} />
         </Reveal>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

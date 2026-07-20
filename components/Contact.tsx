@@ -1,19 +1,15 @@
-"use client";
-
-import { useI18n } from "@/lib/i18n";
 import { EMAIL, GITHUB, LINKEDIN } from "@/data/content";
-import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
-import { GitHubIcon, MailIcon, LinkedInIcon } from "./icons";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
+import { GitHubIcon, LinkedInIcon } from "@/components/icons";
+import { t, type Locale } from "@/lib/i18n";
 
-export function Contact() {
-  const { t } = useI18n();
-
+export function Contact({ locale }: { locale: Locale }) {
   return (
     <section id="contact" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionHeading index="05" title={t("contact.title")} sub={t("contact.sub")} />
+          <SectionHeading index="05" title={t(locale, "contact.title")} sub={t(locale, "contact.sub")} />
         </Reveal>
 
         <Reveal delay={0.05}>
@@ -30,7 +26,7 @@ export function Contact() {
                 href={`mailto:${EMAIL}`}
                 className="glow-btn rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
               >
-                {t("contact.email")}
+                {t(locale, "contact.email")}
               </a>
               <a
                 href={GITHUB}

@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 // WebGL Side Rays — client only.
-const SideRays = dynamic(() => import("./SideRays"), { ssr: false });
+const SideRays = dynamic(() => import("@/components/SideRays"), { ssr: false });
 
 // Fixed, full-viewport rays that stay visible while scrolling.
 export function Background() {
