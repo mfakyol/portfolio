@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { I18nProvider } from "@/lib/i18n";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Background } from "@/components/Background";
 import { NAME } from "@/data/content";
+import { getLocale } from "@/lib/i18n.server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,29 +29,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Locale is resolved on the server from the cookie, so the very first HTML is
+  // already in the right language — no client flash, no pre-hydration script.
+  const locale = await getLocale();
+
   return (
     <html
-      lang="tr"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{var l=localStorage.getItem('locale');if(l==='tr'||l==='en'){window.__LOCALE__=l;document.documentElement.lang=l;}}catch(e){}document.documentElement.classList.add('i18n-pending');setTimeout(function(){document.documentElement.classList.remove('i18n-pending');},1200);})();",
-          }}
-        />
         <Background />
-        <I18nProvider>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </I18nProvider>
+        <Nav locale={locale} />
+        <main className="flex-1">{children}</main>
+        <Footer locale={locale} />
       </body>
     </html>
   );

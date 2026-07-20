@@ -1,23 +1,19 @@
-"use client";
-
-import { useI18n } from "@/lib/i18n";
 import { PROJECTS } from "@/data/content";
-import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
-import { ArrowIcon, CodeIcon } from "./icons";
-import { GlowCard } from "./GlowCard";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
+import { ArrowIcon, CodeIcon } from "@/components/icons";
+import { GlowCard } from "@/components/GlowCard";
+import { t, type Locale } from "@/lib/i18n";
 
-export function Projects() {
-  const { t, locale } = useI18n();
-
+export function Projects({ locale }: { locale: Locale }) {
   return (
     <section id="projects" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <SectionHeading
             index="04"
-            title={t("projects.title")}
-            sub={t("projects.sub")}
+            title={t(locale, "projects.title")}
+            sub={t(locale, "projects.sub")}
           />
         </Reveal>
 
@@ -47,7 +43,7 @@ export function Projects() {
                           href={p.repo}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label={`${p.name} ${t("projects.code")}`}
+                          aria-label={`${p.name} ${t(locale, "projects.code")}`}
                           className="rounded-lg border border-border p-2 transition-colors hover:border-border-strong hover:text-text"
                         >
                           <CodeIcon width={18} height={18} />
@@ -58,7 +54,7 @@ export function Projects() {
                           href={p.live}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label={`${p.name} ${t("projects.live")}`}
+                          aria-label={`${p.name} ${t(locale, "projects.live")}`}
                           className="rounded-lg border border-border p-2 transition-colors hover:border-border-strong hover:text-text"
                         >
                           <ArrowIcon width={18} height={18} />
@@ -92,7 +88,7 @@ export function Projects() {
                         rel="noreferrer"
                         className="glow-btn inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
                       >
-                        {t("projects.live")} <ArrowIcon width={14} height={14} />
+                        {t(locale, "projects.live")} <ArrowIcon width={14} height={14} />
                       </a>
                     )}
                     {p.repo && (
@@ -102,7 +98,7 @@ export function Projects() {
                         rel="noreferrer"
                         className="glow-btn inline-flex items-center gap-1.5 rounded-xl border border-border bg-surface-2 px-4 py-2.5 text-sm font-semibold text-text hover:border-border-strong"
                       >
-                        <CodeIcon width={14} height={14} /> {t("projects.code")}
+                        <CodeIcon width={14} height={14} /> {t(locale, "projects.code")}
                       </a>
                     )}
                   </div>

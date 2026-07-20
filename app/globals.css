@@ -147,15 +147,6 @@ body {
   animation: blink 1s step-end infinite;
 }
 
-/* Prevent the language flash: hide the app until the client applies the
-   stored locale, then fade in (class toggled by an inline script + provider). */
-body {
-  transition: opacity 0.2s ease;
-}
-html.i18n-pending body {
-  opacity: 0;
-}
-
 /* Thin scrollbar */
 * {
   scrollbar-width: thin;
