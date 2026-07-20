@@ -1,21 +1,17 @@
-"use client";
-
-import { useI18n } from "@/lib/i18n";
 import { EXPERIENCE, EDUCATION } from "@/data/content";
-import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
+import { t, type Locale } from "@/lib/i18n";
 
-export function Experience() {
-  const { t, locale } = useI18n();
-
+export function Experience({ locale }: { locale: Locale }) {
   return (
     <section id="experience" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <SectionHeading
             index="02"
-            title={t("experience.title")}
-            sub={t("experience.sub")}
+            title={t(locale, "experience.title")}
+            sub={t(locale, "experience.sub")}
           />
         </Reveal>
 
@@ -62,7 +58,7 @@ export function Experience() {
 
         <Reveal delay={0.05}>
           <h3 className="mb-4 mt-12 text-sm font-semibold uppercase tracking-wide text-muted">
-            {t("experience.education")}
+            {t(locale, "experience.education")}
           </h3>
           <div className="space-y-4">
             {EDUCATION.map((e) => (

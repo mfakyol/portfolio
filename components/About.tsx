@@ -1,25 +1,21 @@
-"use client";
-
-import { useI18n } from "@/lib/i18n";
 import { STATS } from "@/data/content";
-import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
+import { t, type Locale } from "@/lib/i18n";
 
-export function About() {
-  const { t, locale } = useI18n();
-
+export function About({ locale }: { locale: Locale }) {
   return (
     <section id="about" className="scroll-mt-20 px-5 py-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <SectionHeading index="01" title={t("about.title")} />
+          <SectionHeading index="01" title={t(locale, "about.title")} />
         </Reveal>
 
         <div className="grid gap-12 md:grid-cols-[1.6fr_1fr]">
           <Reveal delay={0.05}>
             <div className="space-y-5 text-lg leading-relaxed text-muted">
-              <p>{t("about.p1")}</p>
-              <p>{t("about.p2")}</p>
+              <p>{t(locale, "about.p1")}</p>
+              <p>{t(locale, "about.p2")}</p>
             </div>
           </Reveal>
 
