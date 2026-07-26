@@ -7,8 +7,8 @@ export const GITHUB = "https://github.com/mfakyol";
 export const LINKEDIN = "https://www.linkedin.com/in/mfatihakyol/";
 
 export const ROLE: Record<Locale, string> = {
-  tr: "Frontend Developer",
-  en: "Frontend Developer",
+  tr: "Senior Frontend Developer",
+  en: "Senior Frontend Developer",
 };
 
 export const TAGLINE: Record<Locale, string> = {
