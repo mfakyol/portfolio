@@ -132,10 +132,10 @@ export const PROJECTS: Project[] = [
       en: "Realtime messaging",
     },
     description: {
-      tr: "Socket.io ile anlık mesajlaşma, JWT kimlik doğrulama, dosya paylaşımı ve okundu/çevrimiçi durumu. Next.js arayüz, Express + Socket.io sunucu.",
-      en: "Instant messaging over Socket.io with JWT auth, file sharing and presence. Next.js front end, Express + Socket.io back end.",
+      tr: "Socket.io ile anlık mesajlaşma, httpOnly cookie tabanlı oturum yönetimi, dosya paylaşımı ve okundu/çevrimiçi durumu. Next.js arayüz, Express + Socket.io sunucu.",
+      en: "Instant messaging over Socket.io with httpOnly cookie sessions, file sharing and presence. Next.js front end, Express + Socket.io back end.",
     },
-    tech: ["Next.js", "TypeScript", "Socket.io", "Express", "MongoDB", "JWT"],
+    tech: ["Next.js", "TypeScript", "Socket.io", "Express", "MongoDB", "Zustand"],
     live: "https://chat.fatihakyol.com",
     repo: "https://github.com/mfakyol/chatapp",
   },
