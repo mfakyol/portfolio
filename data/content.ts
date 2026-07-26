@@ -4,7 +4,7 @@ export type Locale = "tr" | "en";
 export const NAME = "Fatih Akyol";
 export const EMAIL = "muhammedfatihakyol@gmail.com";
 export const GITHUB = "https://github.com/mfakyol";
-export const LINKEDIN = "https://www.linkedin.com/in/fatih-akyol-844701183/";
+export const LINKEDIN = "https://www.linkedin.com/in/mfatihakyol/";
 
 export const ROLE: Record<Locale, string> = {
   tr: "Frontend Developer",
