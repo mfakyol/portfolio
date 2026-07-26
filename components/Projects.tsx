@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PROJECTS } from "@/data/content";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
@@ -25,7 +26,8 @@ export function Projects({ locale }: { locale: Locale }) {
               className="sticky pb-6"
               style={{ top: `${96 + i * 16}px` }}
             >
-              <GlowCard className="stack-card flex h-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] sm:p-10">
+              <GlowCard className="stack-card flex h-[380px] gap-8 overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-[0_28px_70px_-30px_rgba(0,0,0,0.85)] sm:p-10">
+                <div className="flex min-w-0 flex-1 flex-col justify-between">
                 <div>
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -103,6 +105,24 @@ export function Projects({ locale }: { locale: Locale }) {
                     )}
                   </div>
                 </div>
+                </div>
+                {p.image && (
+                  <a
+                    href={p.live ?? p.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hidden w-[300px] shrink-0 self-center lg:block"
+                    aria-label={p.name}
+                  >
+                    <Image
+                      src={p.image}
+                      alt={`${p.name} screenshot`}
+                      width={600}
+                      height={300}
+                      className="rounded-xl border border-border object-cover transition-transform duration-300 hover:scale-[1.03]"
+                    />
+                  </a>
+                )}
               </GlowCard>
             </div>
           ))}

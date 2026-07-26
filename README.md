@@ -7,6 +7,8 @@ links to a **live demo** and its source repository.
 
 **Live:** [fatihakyol.com](https://fatihakyol.com)
 
+![Portfolio screenshot](assets/screenshot.png)
+
 ## Features
 
 - Animated hero with a WebGL background (OGL) and motion-driven transitions

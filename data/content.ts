@@ -108,6 +108,7 @@ export interface Project {
   tech: string[];
   live?: string;
   repo?: string;
+  image?: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -124,6 +125,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Vite", "TypeScript", "SCSS Modules", "Node.js", "Express", "MongoDB"],
     live: "https://toolbox.fatihakyol.com",
     repo: "https://github.com/mfakyol/toolbox",
+    image: "/projects/toolbox.png",
   },
   {
     name: "Realtime Chat",
@@ -138,6 +140,7 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js", "TypeScript", "Socket.io", "Express", "MongoDB", "Zustand"],
     live: "https://chat.fatihakyol.com",
     repo: "https://github.com/mfakyol/chatapp",
+    image: "/projects/chat.png",
   },
   {
     name: "Meet",
@@ -152,6 +155,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Vite", "TypeScript", "WebRTC", "Socket.io", "Express"],
     live: "https://meet.fatihakyol.com",
     repo: "https://github.com/mfakyol/meet",
+    image: "/projects/meet.png",
   },
   {
     name: "Code Editor",
@@ -166,6 +170,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Vite", "TypeScript", "CodeMirror", "Express", "MongoDB"],
     live: "https://codeeditor.fatihakyol.com",
     repo: "https://github.com/mfakyol/code-editor",
+    image: "/projects/code-editor.png",
   },
   {
     name: "Collab Whiteboard",
@@ -180,6 +185,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Vite", "TypeScript", "react-konva", "Socket.io", "Express", "MongoDB"],
     live: "https://draw.fatihakyol.com",
     repo: "https://github.com/mfakyol/whiteboard",
+    image: "/projects/draw.png",
   },
   {
     name: "Links",
@@ -194,6 +200,7 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js", "TypeScript", "Mantine", "dnd-kit", "Express", "MongoDB"],
     live: "https://links.fatihakyol.com",
     repo: "https://github.com/mfakyol/links",
+    image: "/projects/link.png",
   },
   {
     name: "Lynx",
@@ -208,6 +215,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Vite", "TypeScript", "Zustand", "Recharts", "Express", "MongoDB"],
     live: "https://lynx.fatihakyol.com",
     repo: "https://github.com/mfakyol/lynx",
+    image: "/projects/lynx.png",
   },
   {
     name: "Typing Test",
@@ -222,6 +230,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Vite", "TypeScript", "Tailwind CSS", "Express", "MongoDB"],
     live: "https://typing.fatihakyol.com",
     repo: "https://github.com/mfakyol/typing",
+    image: "/projects/typing.png",
   },
 ];
 
