@@ -102,6 +102,14 @@ doc — the bar is "static, no interpolated runtime data."
     start edge. It slowly "breathes" (opacity + vertical scale only, so it can't widen the page).
   - `.spotlight`: a soft light following the mouse on desktop-app cards, painted only under
     `@media (hover: hover)`; `Spotlight.tsx` writes `--mx`/`--my` and ignores touch pointers.
+  - `ButtonLink` lifts and grows slightly on hover and presses in on click; its icon hops once
+    (`.btn:hover svg`, `icon-hop`).
+  - Hover states (Tailwind classes in the components): buttons, experience cards, skill
+    chips, glance cells, cards and the contact block lift, light up or show a border; nav
+    links grow an accent underline. Movement uses `motion-safe:` so reduced motion keeps only
+    the color changes. Revealed elements get their transition list from
+    `.reveal-on .reveal.is-visible` (unlayered CSS beats Tailwind's), so a new hover property
+    on a `.reveal` element must be added to that list too.
 - History: this replaced a design with a WebGL "Side Rays" background (`ogl`), motion-driven
   reveals, a typewriter tagline and sticky stacking project cards (see git log). Don't bring
   those back; the redesign removed them on purpose.

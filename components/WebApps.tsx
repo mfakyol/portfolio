@@ -18,7 +18,7 @@ export function WebApps({ locale }: { locale: Locale }) {
         {WEB_PROJECTS.map((p) => (
           <li
             key={p.name}
-            className="reveal group relative flex flex-col gap-3 rounded-[20px] bg-surface p-3 transition-[background-color,translate] duration-200 hover:-translate-y-1 hover:bg-surface-2 sm:p-4"
+            className="reveal group relative flex flex-col gap-3 rounded-[20px] border border-transparent bg-surface p-3 transition-[background-color,border-color,translate] duration-300 ease-soft hover:border-border-strong hover:bg-surface-2 motion-safe:hover:-translate-y-1 sm:p-4"
           >
             <div className="overflow-hidden rounded-xl">
               <Image
@@ -27,7 +27,7 @@ export function WebApps({ locale }: { locale: Locale }) {
                 height={600}
                 alt=""
                 sizes="(min-width: 1152px) 540px, (min-width: 768px) 50vw, 100vw"
-                className="aspect-[2/1] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                className="aspect-[2/1] w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
               />
             </div>
             <h3 className="flex items-center justify-between gap-2 px-1 pt-1 text-xl font-semibold sm:text-[22px]">
@@ -39,7 +39,7 @@ export function WebApps({ locale }: { locale: Locale }) {
                 width={18}
                 height={18}
                 aria-hidden="true"
-                className="text-accent transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                className="text-accent transition-transform duration-300 ease-soft motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
               />
             </h3>
             <p className="px-1 leading-snug text-muted">{p.summary[locale]}</p>

@@ -7,7 +7,7 @@ export function Contact({ locale }: { locale: Locale }) {
   return (
     <section
       id="contact"
-      className="reveal mb-8 mt-14 flex scroll-mt-6 flex-col gap-6 rounded-3xl border border-border bg-surface px-5 py-7 sm:px-8 sm:py-9 lg:mt-20 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-11"
+      className="reveal mb-8 mt-14 flex scroll-mt-6 hover:border-border-strong flex-col gap-6 rounded-3xl border border-border bg-surface px-5 py-7 sm:px-8 sm:py-9 lg:mt-20 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-11"
     >
       <div>
         <h2 className="text-[28px] font-bold leading-tight tracking-[-0.02em] sm:text-4xl">{t(locale, "contact.title")}</h2>

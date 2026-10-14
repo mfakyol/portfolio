@@ -16,17 +16,19 @@ export function DesktopApps({ locale }: { locale: Locale }) {
       {DESKTOP_PROJECTS.map((p, i) => (
         <Spotlight
           key={p.name}
-          className="reveal flex flex-col gap-6 rounded-[20px] bg-surface p-4 sm:p-6 lg:flex-row lg:items-center lg:gap-10 lg:p-9"
+          className="reveal group flex flex-col gap-6 rounded-[20px] border border-transparent bg-surface p-4 hover:border-border sm:p-6 lg:flex-row lg:items-center lg:gap-10 lg:p-9"
         >
           {/* Screenshot first on phones; alternates sides on wide screens. */}
-          <Image
-            src={p.image.src}
-            width={p.image.width}
-            height={p.image.height}
-            alt={p.image.alt[locale]}
-            sizes="(min-width: 1024px) 640px, 100vw"
-            className={`w-full rounded-xl lg:w-[58%] ${i % 2 ? "lg:order-last" : ""}`}
-          />
+          <div className={`w-full overflow-hidden rounded-xl lg:w-[58%] ${i % 2 ? "lg:order-last" : ""}`}>
+            <Image
+              src={p.image.src}
+              width={p.image.width}
+              height={p.image.height}
+              alt={p.image.alt[locale]}
+              sizes="(min-width: 1024px) 640px, 100vw"
+              className="w-full transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.025]"
+            />
+          </div>
           <div className="flex min-w-0 flex-1 flex-col gap-4">
             <p className="font-mono text-[12.5px] text-muted">{p.platforms}</p>
             <h3 className="text-[28px] font-bold leading-tight tracking-[-0.02em] sm:text-4xl">{p.name}</h3>

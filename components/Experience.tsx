@@ -22,7 +22,10 @@ export function Experience({ locale }: { locale: Locale }) {
             <p className="mt-0.5 text-muted">{e.role[locale]}</p>
             <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
               {e.bullets.map((b) => (
-                <li key={b.lead.en} className="reveal rounded-xl bg-surface px-4 py-4 leading-snug">
+                <li
+                  key={b.lead.en}
+                  className="reveal rounded-xl border border-transparent bg-surface px-4 py-4 leading-snug transition-[translate,background-color,border-color] duration-300 ease-soft hover:border-border-strong hover:bg-surface-2 motion-safe:hover:-translate-y-0.5"
+                >
                   <strong className="font-semibold">{b.lead[locale]}</strong> {b.text[locale]}
                 </li>
               ))}
@@ -39,11 +42,17 @@ export function Experience({ locale }: { locale: Locale }) {
               <ul className="flex flex-wrap gap-2">
                 {g.items.map((item) =>
                   g.core?.includes(item) ? (
-                    <li key={item} className="rounded-full bg-accent px-3 py-1.5 text-[14.5px] font-semibold text-accent-ink">
+                    <li
+                      key={item}
+                      className="rounded-full bg-accent px-3 py-1.5 text-[14.5px] font-semibold text-accent-ink transition-[translate,box-shadow] duration-300 ease-soft hover:shadow-[0_6px_18px_-8px_var(--color-accent)] motion-safe:hover:-translate-y-0.5"
+                    >
                       {item}
                     </li>
                   ) : (
-                    <li key={item} className="rounded-full border border-border bg-surface px-3 py-1.5 text-[14.5px]">
+                    <li
+                      key={item}
+                      className="rounded-full border border-border bg-surface px-3 py-1.5 text-[14.5px] transition-[translate,border-color,color] duration-300 ease-soft hover:border-accent hover:text-accent motion-safe:hover:-translate-y-0.5"
+                    >
                       {item}
                     </li>
                   )

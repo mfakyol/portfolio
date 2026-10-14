@@ -31,7 +31,7 @@ export function Nav({ locale }: { locale: Locale }) {
           <a
             key={l.href}
             href={l.href}
-            className="hidden min-h-11 items-center px-3 hover:text-accent sm:inline-flex"
+            className="relative hidden min-h-11 items-center px-3 transition-colors after:absolute after:inset-x-3 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 after:ease-soft hover:text-accent hover:after:scale-x-100 sm:inline-flex"
           >
             {t(locale, l.key)}
           </a>

@@ -13,6 +13,10 @@
 
   --font-sans: var(--font-bricolage);
   --font-mono: var(--font-plex-mono);
+
+  /* Shared easing for every hover transition (Tailwind: ease-soft). Fast out, long glide in:
+     movement never starts or stops abruptly. */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
@@ -87,7 +91,7 @@ body {
    Items are only hidden under `html.reveal-on` (set by that component), so without JS
    nothing stays invisible. Hiding is instant (no transition) so nothing on screen at load
    fades out first; only the way in is animated. The transition list keeps the cards' own
-   hover transitions (translate, background-color), which this rule would otherwise override. */
+   hover transitions (translate, scale, colors, shadow), which this rule would otherwise override. */
 .reveal-on .reveal:not(.is-visible) {
   opacity: 0;
   transform: translateY(40px) scale(0.98);
@@ -96,8 +100,29 @@ body {
   transition:
     opacity 0.7s ease-out,
     transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    translate 0.2s ease,
-    background-color 0.2s ease;
+    translate 0.35s var(--ease-soft),
+    scale 0.35s var(--ease-soft),
+    background-color 0.35s var(--ease-soft),
+    border-color 0.35s var(--ease-soft),
+    color 0.35s var(--ease-soft),
+    box-shadow 0.35s var(--ease-soft);
+}
+
+/* Button icons (ButtonLink adds `.btn`) dip down and back once on hover, gently (no
+   overshoot). Mouse devices only, never under reduced motion. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn:hover svg {
+    animation: icon-dip 0.8s ease-in-out;
+  }
+}
+@keyframes icon-dip {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
 }
 
 /* Pointer-following light on the desktop-app cards (see components/Spotlight.tsx). */
