@@ -138,4 +138,3 @@ doc — the bar is "static, no interpolated runtime data."
 - Locale is not reflected in the URL (a `locale` cookie, resolved server-side); a
   `/[locale]` route segment would make links shareable in a specific language and allow
   static rendering again, but adds a middleware + restructure — deferred.
-- `assets/screenshot.png` (used by the README) shows the old design; retake it.
