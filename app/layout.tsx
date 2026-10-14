@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://fatihakyol.com"),
   title: TITLE,
   description: DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

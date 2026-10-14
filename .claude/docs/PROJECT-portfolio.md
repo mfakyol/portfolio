@@ -29,6 +29,9 @@ Notes unique to **this** repo. General standards live in the sibling docs
 - `public/Fatih_Akyol_CV.pdf` — the CV behind every "Download CV" link (`CV_URL`). Replace the
   file to update it; keep the name or change `CV_URL`.
 - `public/projects/*.png` — project screenshots, 2:1.
+- `app/icon.svg` (dark tile, lime "FA"), `app/favicon.ico` (16/32/48) and `app/apple-icon.png`
+  (180px) are rendered from the same SVG; `app/robots.ts` and `app/sitemap.ts` are metadata
+  routes; `layout.tsx` sets the canonical URL.
 - `app/opengraph-image.png` + `app/twitter-image.png` (+ `.alt.txt`) — the 1200×630 link-preview
   card (file convention; `metadataBase` in `layout.tsx` makes the URLs absolute). Rendered from
   `scripts/og-image.html`; after changing the role or headline, re-render it at 1200×630 and
@@ -75,8 +78,9 @@ Locale is resolved **on the server** and defaults to **`tr`**:
 Server-first resolution renders the correct language in the **first HTML byte**, so there is
 no language flash and no client i18n provider. Don't reintroduce a client i18n context.
 
-**There is no `dangerouslySetInnerHTML` in the app.** If you ever need one, see the security
-doc — the bar is "static, no interpolated runtime data."
+**The only `dangerouslySetInnerHTML` is the schema.org Person JSON-LD in `page.tsx`**: built
+from static `data/content.ts` values with `<` escaped, per the Next.js JSON-LD guide. Any other
+use must meet the security doc's bar — "static, no interpolated runtime data."
 
 ## Design
 
@@ -154,7 +158,6 @@ doc — the bar is "static, no interpolated runtime data."
 
 ## Open follow-ups / ideas (not committed)
 
-- No sitemap/robots or per-route metadata beyond the root (single page — low priority).
 - Locale is not reflected in the URL (a `locale` cookie, resolved server-side); a
   `/[locale]` route segment would make links shareable in a specific language and allow
   static rendering again, but adds a middleware + restructure — deferred.
