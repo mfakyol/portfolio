@@ -1,28 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { NAME } from "@/data/content";
+import { CV_URL, NAME } from "@/data/content";
 import { t, LOCALE_COOKIE, type Locale } from "@/lib/i18n";
 
 const LINKS = [
-  { href: "#about", key: "nav.about" },
   { href: "#experience", key: "nav.experience" },
-  { href: "#skills", key: "nav.skills" },
-  { href: "#projects", key: "nav.projects" },
+  { href: "#work", key: "nav.work" },
   { href: "#contact", key: "nav.contact" },
 ];
 
 export function Nav({ locale }: { locale: Locale }) {
   const router = useRouter();
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Persist the choice in a cookie and re-render the server tree in the new
   // locale (router.refresh sends the just-set cookie, so no full page reload).
@@ -33,38 +22,37 @@ export function Nav({ locale }: { locale: Locale }) {
   };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors ${
-        scrolled
-          ? "border-b border-border bg-bg/80 backdrop-blur-md"
-          : "border-b border-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
-        <a href="#top" className="font-semibold tracking-tight">
-          {NAME.split(" ")[0]}
-          <span className="text-accent">.</span>
-        </a>
-
-        <div className="hidden items-center gap-1 sm:flex">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted transition-colors hover:text-text"
-            >
-              {t(locale, l.key)}
-            </a>
-          ))}
-        </div>
-
+    <header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 py-4 sm:py-6">
+      <a href="#top" className="py-2 text-lg font-bold lowercase">
+        {NAME}
+      </a>
+      <nav aria-label="Main" className="-mx-2 flex flex-wrap items-center font-mono text-[13px]">
+        {LINKS.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            className="hidden min-h-11 items-center px-3 hover:text-accent sm:inline-flex"
+          >
+            {t(locale, l.key)}
+          </a>
+        ))}
         <button
+          type="button"
           onClick={toggle}
-          className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-semibold text-muted transition-colors hover:border-border-strong hover:text-text"
-          aria-label="Change language"
+          aria-label={t(locale, "nav.language")}
+          className="inline-flex min-h-11 cursor-pointer items-center px-3 text-muted hover:text-text"
         >
-          {locale === "tr" ? "EN" : "TR"}
+          <span className={locale === "tr" ? "text-text" : undefined}>tr</span>
+          <span aria-hidden="true">&nbsp;/&nbsp;</span>
+          <span className={locale === "en" ? "text-text" : undefined}>en</span>
         </button>
+        <a
+          href={CV_URL}
+          download
+          className="ml-1 inline-flex min-h-10 items-center rounded-full border border-border-strong px-4 hover:border-text"
+        >
+          cv.pdf ↓
+        </a>
       </nav>
     </header>
   );

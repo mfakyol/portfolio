@@ -6,27 +6,29 @@ Notes unique to **this** repo. General standards live in the sibling docs
 
 ## What this is
 
-- A **single-page, bilingual (TR/EN) personal portfolio** for Fatih Akyol.
-  Live: https://fatihakyol.com
-- **Next.js 16 App Router, React 19, Tailwind v4, TypeScript.** Client-heavy but
-  **no backend, no database, no API routes** — it's a static-content site with client
-  interactivity. Deps are intentionally tiny: `next`, `react`, `motion` (animation),
-  `ogl` (WebGL background).
+- A **single-page, bilingual (TR/EN) personal site** for Fatih Akyol, meant to be linked
+  from a CV in job applications (not a freelance landing page: no "hire me for your
+  project" copy). Its readers are recruiters and interviewers, so the order is: who he is →
+  experience and skills → desktop apps → live web apps → contact. Live: https://fatihakyol.com
+- **Next.js 16 App Router, React 19, Tailwind v4, TypeScript.** Static content, **no backend,
+  no database, no API routes.** Runtime deps are just `next`, `react`, `react-dom` — no
+  animation or WebGL libraries.
 - ⚠️ Pinned Next has breaking changes vs. training data — read
   `node_modules/next/dist/docs/` before touching Next-specific APIs (see AGENTS.md).
 
 ## Topology
 
-- `app/` — App Router. `layout.tsx` (async) is the shell (fonts, metadata, `Background`,
-  `Nav`, `Footer`); `page.tsx` (async) resolves the locale and composes the sections in
-  order: `Hero → About → Experience → Skills → Projects → Contact`.
-- `components/` — one component per section + a few reusable wrappers. Flat, PascalCase.
-  The content sections (`About`, `Experience`, `Skills`, `Projects`, `Contact`), `Footer`,
-  and the presentational leaves (`SectionHeading`, `ShinyText`, `icons`) are **server
-  components**. Only the genuinely-interactive parts are `"use client"`: `Hero` (motion),
-  `Nav` (scroll + locale toggle), `Background`/`SideRays` (WebGL), and the `Reveal` /
-  `GlowCard` / `Typewriter` wrappers (which take server-rendered `children`).
+- `app/` — App Router. `layout.tsx` (async) is the shell (fonts, metadata, one centered
+  `max-w-6xl` column holding `Nav`, `main` and `Footer`); `page.tsx` (async) resolves the
+  locale and composes the sections in order: `Hero → Experience → DesktopApps → WebApps → Contact`.
+- `components/` — one component per section + `ButtonLink` (pill link styled as a button,
+  48px tall), `Spotlight` and `icons`. Flat, PascalCase. **Everything is a server component
+  except `Nav`** (the language toggle), **`Spotlight`** (tracks the pointer; its content is
+  server-rendered `children`) **and `RevealObserver`** (scroll reveal; renders nothing).
 - `data/content.ts` — **the single source of truth for all copy and config.**
+- `public/Fatih_Akyol_CV.pdf` — the CV behind every "Download CV" link (`CV_URL`). Replace the
+  file to update it; keep the name or change `CV_URL`.
+- `public/projects/*.png` — project screenshots, 2:1.
 - `lib/i18n.ts` — pure, client-safe helpers: `t(locale, key)`, `isLocale`,
   `DEFAULT_LOCALE`, `LOCALE_COOKIE`, and the `Locale` type.
 - `lib/i18n.server.ts` — `getLocale()`, which reads the locale cookie via `next/headers`
@@ -34,17 +36,22 @@ Notes unique to **this** repo. General standards live in the sibling docs
 
 ## Content model — edit `data/content.ts`, not JSX
 
-- All copy, projects, skills, experience, education, stats, and UI strings are typed
-  exports in `data/content.ts`. **To add/change content, edit this file** — components map
-  over it and never hardcode copy.
-- Localized fields use `Record<Locale, string>` (`Locale = "tr" | "en"`); list content
-  uses `Record<Locale, string[]>`. UI labels live in the `UI[locale][key]` table, read via
-  `t(locale, "key")` — the `locale` flows down as a prop from the server (no context/hook).
-- Adding a project = push one object to `PROJECTS` (`name`, `tagline`, `description`,
-  `tech`, optional `live`/`repo`). The `Projects` sticky-stack renders it automatically.
-  If you add one, keep the `STATS` "Live projects" count in sync.
+- All copy is typed exports in `data/content.ts`: `GREETING`, `HEADLINE`, `INTRO`, `GLANCE`
+  (the "at a glance" row), `EXPERIENCE` (bullets are `{ lead, text }`: the lead renders bold),
+  `SKILLS` (groups; `core` items render as highlighted chips), `EDUCATION`,
+  `DESKTOP_PROJECTS`, `WEB_PROJECTS` and the `UI` string table. Components map over them and
+  never hardcode copy.
+- **Desktop apps** (`DESKTOP_PROJECTS`) get a full case-study block: platforms, description,
+  `hardPart` (the hardest engineering problem — interview material), Download (GitHub
+  Releases) + Source. **Web apps** (`WEB_PROJECTS`) are cards linking to the live app, with a
+  separate source-code link. Adding a project = push one object to the right array. A future
+  mobile (React Native) app would get its own array and section in the same case-study style.
+- Localized fields use `Record<Locale, string>` (`Locale = "tr" | "en"`). UI labels live in the
+  `UI[locale][key]` table, read via `t(locale, "key")` — the `locale` flows down as a prop from
+  the server (no context/hook). `web.sub` contains a `{n}` placeholder for the project count.
 - **Every new string needs both `tr` and `en`.** A missing UI key falls back to the raw
   key text (visible bug).
+- Keep the site consistent with the CV (role, dates, skills); recruiters read both.
 
 ## i18n — server-first, cookie-based (single URL, no `/tr` `/en` segments)
 
@@ -61,51 +68,43 @@ Locale is resolved **on the server** and defaults to **`tr`**:
    with the just-set cookie, so the whole page re-renders in the new language **without a
    full reload** and without losing scroll position.
 
-**Why this matters / what it replaced:** the old design used a client context + a
-three-part flash-prevention hack (a pre-hydration `dangerouslySetInnerHTML` script,
-`localStorage`, an `html.i18n-pending { opacity:0 }` CSS gate, and an effect in the
-provider). Because the whole tree had to be `"use client"` to read the context, **every
-section shipped as client JS.** Server-first resolution renders the correct language in the
-**first HTML byte**, so the flash cannot happen — the inline script, the `i18n-pending` CSS,
-and the client provider were all **deleted**. The content sections are now server
-components (zero JS). Don't reintroduce a client i18n context.
+Server-first resolution renders the correct language in the **first HTML byte**, so there is
+no language flash and no client i18n provider. Don't reintroduce a client i18n context.
 
-**There is no longer any `dangerouslySetInnerHTML` in the app.** If you ever need one, see
-the security doc — the bar is "static, no interpolated runtime data."
+**There is no `dangerouslySetInnerHTML` in the app.** If you ever need one, see the security
+doc — the bar is "static, no interpolated runtime data."
 
-## WebGL background (Side Rays via `ogl`)
+## Design
 
-- `components/Background.tsx` renders a **fixed, full-viewport** rays effect behind
-  everything (`fixed inset-0 -z-10`, `pointer-events-none`). It loads `SideRays` via
-  `next/dynamic(..., { ssr: false })` — **WebGL must never run during SSR.**
-- `components/SideRays.tsx` is a React Bits (reactbits.dev) shader ported to `ogl`. It
-  already implements the safety patterns the security doc requires:
-  IntersectionObserver-gated (pauses offscreen), DPR-capped at 2, full teardown on unmount
-  (cancel rAF, remove listeners, `WEBGL_lose_context`), and try/catch around GL init/render.
-- There are also **two static gradient washes** as background: CSS radial-gradients on
-  `body` in `globals.css`. The WebGL rays layer on top of those.
-- History: this replaced an earlier "Aurora" WebGL background (see git log). If revisiting
-  the background, prefer tuning `SideRays` props in `Background.tsx` over adding new WebGL.
-
-## Projects section — sticky stacking cards (CSS-driven, not JS scroll)
-
-- `components/Projects.tsx` renders each project in a `position: sticky` wrapper with a
-  staggered `top` (`96 + i*16`px) so cards **stack** as you scroll the normal page.
-- Cards **shrink + dim as they get buried** purely via CSS scroll-driven animation
-  (`.stack-card`, `animation-timeline: view()` in `globals.css`), gated behind
-  `@supports` so unsupported browsers just stack without the shrink. **No JS scroll
-  listener, no Lenis, no inner-scroll library** — an earlier ScrollStack/Lenis approach
-  was deliberately removed (git log `1cd1d73`). Don't reintroduce a scroll library for this.
-- Cards use `GlowCard` (mouse-following border glow via CSS `--mx/--my`) + the `.glow-card`
-  helper. Fixed card height (`h-[380px]`) keeps the stack uniform.
-
-## Reusable visual wrappers
-
-- `Reveal` — motion scroll-in wrapper (`whileInView`, `once`). Use for section entrances.
-- `GlowCard` — mouse-following border-glow card wrapper.
-- `Typewriter` — cycles `TAGLINES[locale]` in the hero; resets cleanly on language switch.
-- `ShinyText` — sweeping shine on the role heading (`.shiny-text` keyframes).
-- All the `.gradient-text` / `.glow-btn` / `.card-glow` helpers live in `globals.css`.
+- Dark "product showcase" look: near-black ground, `surface` cards, one lime accent used
+  only for primary buttons, core-skill chips and small labels. Tokens are in `globals.css`
+  `@theme` (`bg`, `surface`, `surface-2`, `border`, `border-strong`, `text`, `muted`,
+  `accent`, `accent-ink`); use them, never inline hex.
+- Type: **Bricolage Grotesque** (variable, `opsz` axis) for text, **IBM Plex Mono** (400/500)
+  for small labels, both via `next/font/google` with `latin-ext` for Turkish letters.
+- **Mobile first:** base classes are the phone layout, `sm:` / `md:` / `lg:` widen it. Grids
+  collapse to one column, the hero headline scales 40px → 80px, the page gutter is 16px on
+  phones. Touch targets are ≥44px (`ButtonLink` is 48px).
+- Effects are CSS-only (no animation library) and all switch off under
+  `prefers-reduced-motion`; they live in `globals.css`:
+  - `.rise` (+ `[--d:…]` delay): the hero pieces rise in one after another on load.
+  - `.type-char` / `.type-caret`: the hero greeting types itself out without JS. Each
+    character starts at `font-size: 0` and snaps to `1em` at its own `--d`, so the caret moves
+    along; screen readers get the full greeting from an `sr-only` copy. Timing is in `Hero.tsx`.
+  - `.wave`: the hand appears when typing ends and waves twice.
+  - `.reveal`: sections and cards fade/lift in as they scroll into view. `RevealObserver.tsx`
+    (client, renders nothing, mounted once in `layout.tsx`) uses an IntersectionObserver to add
+    `is-visible`; items are only hidden under `html.reveal-on`, which it sets, so without JS
+    nothing stays invisible. Not CSS scroll-driven animations: those didn't run in the owner's
+    browser, and with an `entry` range small items finished within a few pixels.
+  - `.page-glow`: a still, faint lime glow falling from the top edge of the page behind the
+    hero; a full-width element in `layout.tsx`, not the content column, so it has no visible
+    start edge. It slowly "breathes" (opacity + vertical scale only, so it can't widen the page).
+  - `.spotlight`: a soft light following the mouse on desktop-app cards, painted only under
+    `@media (hover: hover)`; `Spotlight.tsx` writes `--mx`/`--my` and ignores touch pointers.
+- History: this replaced a design with a WebGL "Side Rays" background (`ogl`), motion-driven
+  reveals, a typewriter tagline and sticky stacking project cards (see git log). Don't bring
+  those back; the redesign removed them on purpose.
 
 ## Deploy
 
@@ -122,15 +121,14 @@ the security doc — the bar is "static, no interpolated runtime data."
 ## Testing
 
 - **No test suite currently** (no `test` script; deps are `dev`/`build`/`start`/`lint`
-  only). Don't claim tests exist. Verify changes by running `npm run dev` and checking the
-  live preview + `npm run lint`.
+  only). Don't claim tests exist. Verify changes with `npx tsc --noEmit`, `npm run lint`
+  (clean), `npm run build`, and by checking `npm run dev` at phone and desktop widths.
 
 ## Conventions for this repo/owner
 
 - **Do not add a `Co-Authored-By` trailer** to commits (owner preference — matches the
   owner's other repos).
-- Prefer small, single-concern commits; commit messages describe the visible change
-  (see git log style: "Typewriter hero tagline…", "Sticky stacking project cards…").
+- Prefer small, single-concern commits; commit messages describe the visible change.
 - Content/config changes go through `data/content.ts`; styling tokens through
   `globals.css` `@theme` — not inline hex.
 
@@ -140,6 +138,4 @@ the security doc — the bar is "static, no interpolated runtime data."
 - Locale is not reflected in the URL (a `locale` cookie, resolved server-side); a
   `/[locale]` route segment would make links shareable in a specific language and allow
   static rendering again, but adds a middleware + restructure — deferred.
-- `Typewriter.tsx` trips the newer `react-hooks/set-state-in-effect` lint rule
-  (pre-existing; setState called synchronously inside its effect). Worth a refactor to a
-  ref/timer-driven loop so `npm run lint` is clean.
+- `assets/screenshot.png` (used by the README) shows the old design; retake it.

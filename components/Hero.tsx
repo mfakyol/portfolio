@@ -1,81 +1,71 @@
-"use client";
-
-import { motion } from "motion/react";
-import { NAME, ROLE, TAGLINES, GITHUB, EMAIL, LINKEDIN } from "@/data/content";
-import { GitHubIcon, MailIcon, LinkedInIcon } from "@/components/icons";
-import { Typewriter } from "@/components/Typewriter";
-import { ShinyText } from "@/components/ShinyText";
+import type { CSSProperties } from "react";
+import { CV_URL, GITHUB, GLANCE, GREETING, HEADLINE, INTRO, LINKEDIN, LOCATION, ROLE } from "@/data/content";
+import { ButtonLink } from "@/components/ButtonLink";
+import { DownloadIcon } from "@/components/icons";
 import { t, type Locale } from "@/lib/i18n";
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 22 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.4, 0, 0.2, 1] as const },
-});
+// Typewriter timing for the greeting (CSS-only, see .type-char in globals.css).
+const TYPE_START = 350;
+const TYPE_STEP = 60;
+const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
 export function Hero({ locale }: { locale: Locale }) {
+  const greeting = Array.from(GREETING[locale]);
+  const typed = TYPE_START + greeting.length * TYPE_STEP;
+
   return (
-    <section id="top" className="relative flex min-h-svh items-center px-5 pt-16">
-      <div className="mx-auto w-full max-w-5xl">
-        <motion.span
-          {...fade(0)}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 text-xs font-medium text-muted"
+    <section id="top" className="pb-14 pt-10 sm:pt-16 lg:pt-24">
+      <p className="rise font-mono text-[13px] text-accent">
+        {ROLE[locale]} · {LOCATION}
+      </p>
+      <p className="rise mt-5 text-[22px] font-medium [--d:90ms] sm:text-[26px]">
+        {/* Screen readers get the whole greeting once; the typed characters are decorative. */}
+        <span className="sr-only">{GREETING[locale]}</span>
+        <span aria-hidden="true">
+          {greeting.map((c, i) => (
+            <span key={i} className="type-char" style={delay(TYPE_START + i * TYPE_STEP)}>
+              {c}
+            </span>
+          ))}
+        </span>
+        <span aria-hidden="true" className="type-caret" style={{ "--done": `${typed + 900}ms` } as CSSProperties} />{" "}
+        <span
+          className="wave type-char"
+          role="img"
+          aria-label="waving hand"
+          style={{ ...delay(typed + 150), "--wave-delay": `${typed + 300}ms` } as CSSProperties}
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-          </span>
-          {t(locale, "hero.available")}
-        </motion.span>
+          👋
+        </span>
+      </p>
+      <h1 className="rise mt-3 max-w-4xl [--d:180ms] text-[40px] font-bold leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-[80px] lg:leading-[0.98]">
+        {HEADLINE[locale]}
+      </h1>
+      <p className="rise mt-6 max-w-2xl text-[17px] leading-relaxed text-muted [--d:270ms] sm:text-xl">
+        {INTRO[locale]}
+      </p>
 
-        <motion.h1
-          {...fade(0.08)}
-          className="mt-6 text-5xl font-extrabold tracking-tight sm:text-7xl"
-        >
-          {NAME.split(" ")[0]} <span className="gradient-text">{NAME.split(" ").slice(1).join(" ")}</span>
-        </motion.h1>
-
-        <motion.p
-          {...fade(0.16)}
-          className="mt-4 text-xl font-semibold sm:text-2xl"
-        >
-          <ShinyText text={ROLE[locale]} />
-        </motion.p>
-
-        <motion.p
-          {...fade(0.24)}
-          className="mt-4 flex min-h-[3.5rem] max-w-xl items-start text-base leading-relaxed text-muted sm:min-h-[2rem] sm:text-lg"
-        >
-          <Typewriter phrases={TAGLINES[locale]} />
-        </motion.p>
-
-        <motion.div {...fade(0.32)} className="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
-            className="glow-btn rounded-xl bg-gradient-to-r from-accent to-accent-2 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
-          >
-            {t(locale, "hero.cta.projects")}
-          </a>
-          <a
-            href="#contact"
-            className="glow-btn rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-text hover:border-border-strong"
-          >
-            {t(locale, "hero.cta.contact")}
-          </a>
-        </motion.div>
-
-        <motion.div {...fade(0.4)} className="mt-8 flex items-center gap-4 text-muted">
-          <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors hover:text-text">
-            <GitHubIcon />
-          </a>
-          <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-text">
-            <LinkedInIcon />
-          </a>
-          <a href={`mailto:${EMAIL}`} aria-label="Email" className="transition-colors hover:text-text">
-            <MailIcon />
-          </a>
-        </motion.div>
+      <div className="rise mt-8 flex flex-wrap gap-3 [--d:360ms]">
+        <ButtonLink variant="primary" href={CV_URL} download>
+          <DownloadIcon width={16} height={16} /> {t(locale, "cv.download")}
+        </ButtonLink>
+        <ButtonLink href={LINKEDIN} target="_blank" rel="noreferrer">
+          LinkedIn
+        </ButtonLink>
+        <ButtonLink href={GITHUB} target="_blank" rel="noreferrer">
+          GitHub
+        </ButtonLink>
       </div>
+
+      {/* 1px gaps over a border-colored grid draw the dividers between cells. */}
+      <dl className="rise mt-12 grid [--d:450ms] grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+        {GLANCE.map((g) => (
+          <div key={g.label.en} className="bg-bg px-5 py-4">
+            <dt className="font-mono text-[12.5px] text-muted">{g.label[locale]}</dt>
+            <dd className="mt-1 text-lg font-semibold">{g.value[locale]}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }

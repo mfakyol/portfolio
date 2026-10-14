@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0b0f;
-  --color-surface: #12141b;
-  --color-surface-2: #191c25;
-  --color-border: #262b38;
-  --color-border-strong: #333a4a;
-  --color-text: #e9edf5;
-  --color-muted: #99a1b3;
-  --color-accent: #6366f1;
-  --color-accent-2: #a855f7;
+  --color-bg: #0d0e10;
+  --color-surface: #16181c;
+  --color-surface-2: #1c1f24;
+  --color-border: #2a2d33;
+  --color-border-strong: #34373d;
+  --color-text: #ededea;
+  --color-muted: #a5a7ab;
+  --color-accent: #b8f45a;
+  --color-accent-ink: #0d0e10;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-bricolage);
+  --font-mono: var(--font-plex-mono);
 }
 
 :root {
@@ -20,11 +20,7 @@
 }
 
 body {
-  background:
-    radial-gradient(1000px 600px at 100% -10%, rgba(168, 85, 247, 0.12), transparent 55%),
-    radial-gradient(1000px 600px at 0% -10%, rgba(99, 102, 241, 0.14), transparent 55%),
-    var(--color-bg);
-  background-attachment: fixed;
+  background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,119 +28,173 @@ body {
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
-/* Reusable helpers */
-.gradient-text {
-  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+a {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.card-glow {
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.card-glow:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-border-strong);
-  box-shadow: 0 18px 40px -20px rgba(99, 102, 241, 0.45);
-}
-
-/* Mouse-following border glow (React Bits style). Add class "glow-card"
-   and update --mx/--my on mousemove. */
-.glow-card {
+/* A still, faint lime glow falling from the top edge of the page, behind the hero.
+   Full page width (not the content column), so it has no visible start edge.
+   Static on purpose: no animation, no JS. */
+body {
   position: relative;
+  isolation: isolate;
+  overflow-x: clip;
 }
-.glow-card::before {
-  content: "";
+.page-glow {
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: radial-gradient(
-    240px circle at var(--mx, -200px) var(--my, -200px),
-    rgba(168, 85, 247, 0.95),
-    rgba(99, 102, 241, 0.5) 25%,
-    transparent 55%
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  inset: 0 0 auto 0;
+  height: 900px;
+  z-index: -1;
   pointer-events: none;
-  z-index: 2;
-}
-.glow-card:hover::before {
-  opacity: 1;
-}
-
-/* Button glow on hover */
-.glow-btn {
-  transition: transform 0.16s ease, box-shadow 0.3s ease, border-color 0.2s ease;
-}
-.glow-btn:hover {
-  box-shadow: 0 0 26px rgba(99, 102, 241, 0.55), 0 8px 20px -10px rgba(99, 102, 241, 0.6);
-}
-
-/* Sticky-stack cards shrink & dim as they get buried (scroll-driven).
-   Progressive enhancement — no effect where view() timelines are unsupported. */
-.stack-card {
-  transform-origin: top center;
-}
-@supports (animation-timeline: view()) {
-  .stack-card {
-    animation: card-bury linear both;
-    animation-timeline: view();
-    animation-range: exit 0% exit 55%;
-  }
-}
-@keyframes card-bury {
-  to {
-    transform: scale(0.9);
-    opacity: 0.6;
-  }
-}
-
-/* Shiny text (React Bits) — a bright band sweeps across the text */
-.shiny-text {
-  background: linear-gradient(
-    120deg,
-    var(--color-muted) 38%,
-    #f4f6fb 50%,
-    var(--color-muted) 62%
+  transform-origin: 30% 0;
+  background: radial-gradient(
+    ellipse 60% 75% at 30% 0%,
+    color-mix(in srgb, var(--color-accent) 10%, transparent),
+    transparent 70%
   );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: shine 4s linear infinite;
+  animation: glow-breathe 14s ease-in-out infinite;
 }
-@keyframes shine {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: -100%;
-  }
-}
-
-/* Typewriter caret */
-@keyframes blink {
+/* Only opacity and vertical scale: nothing can widen the page. */
+@keyframes glow-breathe {
   0%,
   100% {
     opacity: 1;
+    transform: scaleY(1);
   }
+  50% {
+    opacity: 0.65;
+    transform: scaleY(1.12);
+  }
+}
+
+/* Hero entrance: each piece rises in, staggered with --d (e.g. class "rise [--d:120ms]"). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Scroll reveal: RevealObserver.tsx adds `is-visible` as each `.reveal` enters the viewport.
+   Items are only hidden under `html.reveal-on` (set by that component), so without JS
+   nothing stays invisible. Hiding is instant (no transition) so nothing on screen at load
+   fades out first; only the way in is animated. The transition list keeps the cards' own
+   hover transitions (translate, background-color), which this rule would otherwise override. */
+.reveal-on .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+.reveal-on .reveal.is-visible {
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* Pointer-following light on the desktop-app cards (see components/Spotlight.tsx). */
+@media (hover: hover) {
+  .spotlight {
+    background-image: radial-gradient(
+      460px circle at var(--mx, -9999px) var(--my, -9999px),
+      color-mix(in srgb, var(--color-accent) 7%, transparent),
+      transparent 65%
+    );
+  }
+}
+
+/* Typewriter for the hero greeting, without JS (see Hero.tsx). Each character starts at
+   font-size 0, so it takes no room, and snaps to full size at its own --d delay: the text
+   types itself out and the caret right after it moves along. */
+.type-char {
+  font-size: 0;
+  animation: type-in 0s var(--d, 0ms) forwards;
+}
+@keyframes type-in {
+  to {
+    font-size: 1em;
+  }
+}
+.type-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 3px;
+  vertical-align: -0.1em;
+  background: var(--color-accent);
+  animation:
+    caret-blink 0.9s steps(1) infinite,
+    caret-out 0s var(--done, 2s) forwards;
+}
+@keyframes caret-blink {
   50% {
     opacity: 0;
   }
 }
-.caret {
-  margin-left: 1px;
-  animation: blink 1s step-end infinite;
+@keyframes caret-out {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Waving hand in the hero greeting: appears when the typing ends, waves twice, then rests. */
+.wave {
+  display: inline-block;
+  transform-origin: 70% 75%;
+  animation:
+    type-in 0s var(--d, 0ms) forwards,
+    wave 2.4s ease-in-out var(--wave-delay, 0.4s) 2;
+}
+.wave.type-char {
+  font-size: 0;
+}
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave,
+  .rise,
+  .reveal,
+  .page-glow,
+  .type-char {
+    animation: none;
+  }
+  .type-char,
+  .wave.type-char {
+    font-size: 1em;
+  }
+  .type-caret {
+    display: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Thin scrollbar */

@@ -1,4 +1,4 @@
-import { NAME } from "@/data/content";
+import { GITHUB, LINKEDIN, NAME } from "@/data/content";
 import { t, type Locale } from "@/lib/i18n";
 
 export function Footer({ locale }: { locale: Locale }) {
@@ -7,13 +7,18 @@ export function Footer({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border px-5 py-8">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-2 text-sm text-muted sm:flex-row">
-        <span>
-          © {year} {NAME}. {t(locale, "footer.rights")}
-        </span>
-        <span>{t(locale, "footer.built")}</span>
-      </div>
+    <footer className="flex flex-wrap items-center justify-between gap-3 pb-8 font-mono text-[12.5px] text-muted">
+      <span>
+        © {year} {NAME}. {t(locale, "footer.rights")}
+      </span>
+      <span className="flex gap-1">
+        <a href={GITHUB} target="_blank" rel="noreferrer" className="px-2 py-3 hover:text-text">
+          github
+        </a>
+        <a href={LINKEDIN} target="_blank" rel="noreferrer" className="px-2 py-3 hover:text-text">
+          linkedin
+        </a>
+      </span>
     </footer>
   );
 }

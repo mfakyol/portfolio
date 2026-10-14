@@ -1,30 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { Background } from "@/components/Background";
+import { RevealObserver } from "@/components/RevealObserver";
 import { NAME } from "@/data/content";
 import { getLocale } from "@/lib/i18n.server";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+// latin-ext covers Turkish letters (ş, ğ, ı, İ).
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin", "latin-ext"],
+  axes: ["opsz"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500"],
 });
+
+const DESCRIPTION =
+  "Senior Frontend Developer specialized in React, Next.js and TypeScript, with Node.js and Express on the backend. Web apps live in production and desktop apps for Windows and macOS.";
 
 export const metadata: Metadata = {
-  title: `${NAME} — Frontend Developer`,
-  description:
-    "Frontend Developer building modern, fast and accessible web interfaces with React, Next.js and TypeScript.",
+  title: `${NAME} — Senior Frontend Developer`,
+  description: DESCRIPTION,
   openGraph: {
-    title: `${NAME} — Frontend Developer`,
-    description:
-      "Frontend Developer building modern web interfaces with React, Next.js and TypeScript.",
+    title: `${NAME} — Senior Frontend Developer`,
+    description: DESCRIPTION,
     type: "website",
   },
 };
@@ -41,13 +45,16 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Background />
-        <Nav locale={locale} />
-        <main className="flex-1">{children}</main>
-        <Footer locale={locale} />
+        <div aria-hidden="true" className="page-glow" />
+        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 sm:px-8 lg:px-10">
+          <Nav locale={locale} />
+          <main className="flex-1">{children}</main>
+          <Footer locale={locale} />
+        </div>
+        <RevealObserver />
       </body>
     </html>
   );

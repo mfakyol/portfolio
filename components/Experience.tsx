@@ -1,81 +1,71 @@
-import { EXPERIENCE, EDUCATION } from "@/data/content";
-import { SectionHeading } from "@/components/SectionHeading";
-import { Reveal } from "@/components/Reveal";
+import { EDUCATION, EXPERIENCE, EXPERIENCE_SUMMARY, SKILLS } from "@/data/content";
 import { t, type Locale } from "@/lib/i18n";
 
 export function Experience({ locale }: { locale: Locale }) {
   return (
-    <section id="experience" className="scroll-mt-20 px-5 py-24">
-      <div className="mx-auto max-w-5xl">
-        <Reveal>
-          <SectionHeading
-            index="02"
-            title={t(locale, "experience.title")}
-            sub={t(locale, "experience.sub")}
-          />
-        </Reveal>
+    <section
+      id="experience"
+      className="flex scroll-mt-6 flex-col gap-8 border-t border-border py-14 lg:flex-row lg:gap-10 lg:py-20"
+    >
+      <div className="reveal lg:w-1/3">
+        <h2 className="text-4xl font-bold tracking-[-0.02em]">{t(locale, "experience.title")}</h2>
+        <p className="mt-3 text-muted">{EXPERIENCE_SUMMARY[locale]}</p>
+      </div>
 
-        <div className="space-y-6">
-          {EXPERIENCE.map((e, i) => (
-            <Reveal key={e.company} delay={i * 0.05}>
-              <div className="rounded-2xl border border-border bg-surface/60 p-6 sm:p-8">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <div>
-                    <h3 className="text-lg font-bold">
-                      {e.role[locale]}{" "}
-                      <span className="text-accent">· {e.company}</span>
-                    </h3>
-                    <p className="text-sm text-muted">{e.location}</p>
-                  </div>
-                  <span className="font-mono text-sm text-muted">
-                    {e.period[locale]}
-                  </span>
-                </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-10">
+        {EXPERIENCE.map((e) => (
+          <article key={e.company}>
+            <div className="reveal flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 className="text-[22px] font-semibold">{e.company}</h3>
+              <span className="font-mono text-[13px] text-muted">{e.period[locale]}</span>
+            </div>
+            <p className="mt-0.5 text-muted">{e.role[locale]}</p>
+            <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+              {e.bullets.map((b) => (
+                <li key={b.lead.en} className="reveal rounded-xl bg-surface px-4 py-4 leading-snug">
+                  <strong className="font-semibold">{b.lead[locale]}</strong> {b.text[locale]}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
 
-                <ul className="mt-4 space-y-2">
-                  {e.bullets[locale].map((b, j) => (
-                    <li key={j} className="flex gap-2.5 text-muted">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                      <span className="leading-relaxed">{b}</span>
+        <div className="flex flex-col gap-4">
+          {SKILLS.map((g) => (
+            <div key={g.title.en} className="reveal flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-4">
+              <h3 className="shrink-0 font-mono text-[13px] font-medium text-muted sm:w-44">
+                {g.title[locale]}
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {g.items.map((item) =>
+                  g.core?.includes(item) ? (
+                    <li key={item} className="rounded-full bg-accent px-3 py-1.5 text-[14.5px] font-semibold text-accent-ink">
+                      {item}
                     </li>
-                  ))}
-                </ul>
+                  ) : (
+                    <li key={item} className="rounded-full border border-border bg-surface px-3 py-1.5 text-[14.5px]">
+                      {item}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          ))}
 
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {e.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-md bg-surface-2 px-2 py-0.5 font-mono text-xs text-muted"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
+          {EDUCATION.map((e) => (
+            <p
+              key={e.school}
+              className="mt-2 flex flex-col gap-1 border-t border-border pt-5 sm:flex-row sm:items-baseline sm:gap-4"
+            >
+              <span className="shrink-0 font-mono text-[13px] text-muted sm:w-44">
+                {t(locale, "experience.education")}
+              </span>
+              <span>
+                {e.degree[locale]}, {e.school}, {e.year}
+              </span>
+            </p>
           ))}
         </div>
-
-        <Reveal delay={0.05}>
-          <h3 className="mb-4 mt-12 text-sm font-semibold uppercase tracking-wide text-muted">
-            {t(locale, "experience.education")}
-          </h3>
-          <div className="space-y-4">
-            {EDUCATION.map((e) => (
-              <div
-                key={e.school}
-                className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 rounded-2xl border border-border bg-surface/60 p-6"
-              >
-                <div>
-                  <h4 className="font-bold">{e.school}</h4>
-                  <p className="text-sm text-accent">{e.degree[locale]}</p>
-                  <p className="text-sm text-muted">{e.location}</p>
-                </div>
-                <span className="font-mono text-sm text-muted">{e.period}</span>
-              </div>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   );

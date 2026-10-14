@@ -1,9 +1,10 @@
 # fatihakyol.com
 
-My personal portfolio — a bilingual (EN/TR) single-page site showcasing the
-products I build and ship: a real-time chat platform, video conferencing,
-a collaborative whiteboard, a browser code editor, and more. Every project
-links to a **live demo** and its source repository.
+My personal site — a bilingual (EN/TR) single page with my experience, skills
+and the products I build and ship: desktop apps for Windows and macOS, and web
+apps running live on my own server (real-time chat, video calls, a collaborative
+whiteboard, a browser code editor and more). Desktop apps link to their
+installers, web apps to a **live demo**, and every project to its source.
 
 **Live:** [fatihakyol.com](https://fatihakyol.com)
 
@@ -11,16 +12,17 @@ links to a **live demo** and its source repository.
 
 ## Features
 
-- Animated hero with a WebGL background (OGL) and motion-driven transitions
-- EN / TR language toggle — all content is data-driven from a single typed file
-- Project grid with live-demo and repository links for every product
-- Fully responsive, keyboard-friendly, fast
+- Mobile-first layout that scales from a 360px phone to a wide desktop
+- EN / TR language toggle, resolved on the server so the first HTML is already in the right language
+- All content is data-driven from a single typed file
+- Desktop app case studies, live web app cards and a downloadable CV
+- Almost all server components (only the language toggle, a pointer spotlight and the scroll reveal run on the client), no animation or WebGL libraries
+- CSS animations that switch off when the visitor asks for reduced motion
 
 ## Tech Stack
 
 - **Framework** — Next.js (App Router), React, TypeScript
-- **Styling & motion** — Tailwind CSS, Motion (Framer Motion)
-- **Graphics** — OGL (WebGL)
+- **Styling** — Tailwind CSS
 - **Deployment** — Docker + nginx
 
 ## Getting Started
@@ -30,8 +32,9 @@ npm install
 npm run dev               # http://localhost:3000
 ```
 
-Project content (bio, projects, links) lives in [`data/content.ts`](data/content.ts) —
-edit that single file to update the site.
+Site content (bio, experience, skills, projects, links) lives in
+[`data/content.ts`](data/content.ts) — edit that single file to update the site.
+The CV is served from [`public/Fatih_Akyol_CV.pdf`](public/Fatih_Akyol_CV.pdf).
 
 ## Deployment
 
