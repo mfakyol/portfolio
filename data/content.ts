@@ -77,8 +77,8 @@ export const EXPERIENCE: Experience[] = [
       },
       {
         lead: {
-          tr: "Farklı sektörlerden müşteriler için ~15 proje:",
-          en: "Shipped ~15 client projects across industries:",
+          tr: "Farklı sektörlerden müşteriler için 15+ proje:",
+          en: "Shipped 15+ client projects across industries:",
         },
         text: {
           tr: "admin panelleri, ödeme adımlarıyla e-ticaret siteleri, şirket içi masaüstü uygulamaları ve React Native mobil uygulamalar",
@@ -98,8 +98,8 @@ export const EXPERIENCE: Experience[] = [
           en: "Moved a business-critical admin dashboard from ASP.NET 4.5 to Next.js:",
         },
         text: {
-          tr: "sayfalar ~4 kat daha hızlı, arayüz çok daha kullanışlı, rol bazlı yetkilendirme daha sıkı",
-          en: "~4x faster pages, a far more usable UI and stricter role-based access",
+          tr: "sayfalar 4 kat daha hızlı, arayüz çok daha kullanışlı, rol bazlı yetkilendirme daha sıkı",
+          en: "4x faster pages, a far more usable UI and stricter role-based access",
         },
       },
       {
