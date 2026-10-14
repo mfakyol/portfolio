@@ -55,6 +55,7 @@ export const SKILLS: SkillGroup[] = [
       "Tailwind CSS",
       "SCSS / CSS Modules",
       "Framer Motion",
+      "Electron",
     ],
   },
   {
@@ -108,10 +109,42 @@ export interface Project {
   tech: string[];
   live?: string;
   repo?: string;
+  /** Desktop apps: link to the installers (GitHub Releases) instead of a live URL. */
+  download?: string;
   image?: string;
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: "Clipboard History",
+    tagline: {
+      tr: "Pano yöneticisi",
+      en: "Clipboard manager",
+    },
+    description: {
+      tr: "Windows ve macOS için pano geçmişi: Ctrl+Shift+V ile yazdığın alanın hemen altında açılır, tek tıkla yapıştırırsın. Metin, link, renk ve görselleri saklar; arama ve sabitleme var.",
+      en: "Clipboard history for Windows and macOS: Ctrl+Shift+V opens it right under the field you're typing in, and one click pastes. Keeps text, links, colors and images, with search and pinning.",
+    },
+    tech: ["Electron", "React", "Vite", "C#", "Swift"],
+    repo: "https://github.com/mfakyol/clipboard-history",
+    download: "https://github.com/mfakyol/clipboard-history/releases/latest",
+    image: "/projects/clipboard-history.png",
+  },
+  {
+    name: "Screen Splitter",
+    tagline: {
+      tr: "Dijital tabela",
+      en: "Digital signage",
+    },
+    description: {
+      tr: "Mağaza TV'leri ve kiosklar için: ekranı bölgelere ayır, her bölgeye bir web sayfası ver ve birden fazla monitörde tam ekran oynat. Windows ile açılır, tepside çalışır.",
+      en: "For store TVs and kiosks: split a screen into zones, give each zone a web page and play them full screen across multiple monitors. Starts with Windows and runs in the tray.",
+    },
+    tech: ["Electron", "React", "TypeScript", "Vite", "Vitest"],
+    repo: "https://github.com/mfakyol/screen-splitter",
+    download: "https://github.com/mfakyol/screen-splitter/releases/latest",
+    image: "/projects/screen-splitter.png",
+  },
   {
     name: "Toolbox",
     tagline: {
@@ -323,15 +356,16 @@ export const UI: Record<Locale, Record<string, string>> = {
     "hero.available": "Yeni projelere açık",
     "about.title": "Hakkımda",
     "about.p1": "5+ yıldır web arayüzleri geliştiren bir Frontend Developer'ım. React ve Next.js ekosisteminde, performanslı ve bakımı kolay uygulamalar kurmaya odaklanıyorum.",
-    "about.p2": "Full-stack tarafında Node.js, Express, MongoDB ve Socket.io ile uçtan uca ürünler geliştirip Docker + nginx ile kendi sunucuma deploy ediyorum. Aşağıdaki projelerin tamamı canlıda ve kendi altyapımda çalışıyor.",
+    "about.p2": "Full-stack tarafında Node.js, Express, MongoDB ve Socket.io ile uçtan uca ürünler geliştirip Docker + nginx ile kendi sunucuma deploy ediyorum. Aşağıdaki web projelerinin tamamı canlıda ve kendi altyapımda çalışıyor; masaüstü uygulamalarını ise Electron ile geliştirip GitHub Releases üzerinden kurulum dosyası olarak yayınlıyorum.",
     "experience.title": "Deneyim",
     "experience.sub": "Profesyonel çalışma geçmişim.",
     "experience.education": "Eğitim",
     "skills.title": "Yetenekler",
     "skills.sub": "Kullandığım teknolojiler ve araçlar.",
     "projects.title": "Projeler",
-    "projects.sub": "Sıfırdan geliştirip yayına aldığım, canlıda çalışan uygulamalar.",
+    "projects.sub": "Sıfırdan geliştirip yayına aldığım web ve masaüstü uygulamaları.",
     "projects.live": "Canlı",
+    "projects.download": "İndir",
     "projects.code": "Kod",
     "contact.title": "İletişime geç",
     "contact.sub": "Bir fikrin mi var ya da birlikte çalışmak mı istiyorsun? Yaz.",
@@ -350,15 +384,16 @@ export const UI: Record<Locale, Record<string, string>> = {
     "hero.available": "Open to new projects",
     "about.title": "About",
     "about.p1": "I'm a Frontend Developer with 5+ years of experience building web interfaces. I focus on performant, maintainable apps in the React and Next.js ecosystem.",
-    "about.p2": "On the full-stack side I build end-to-end products with Node.js, Express, MongoDB and Socket.io, then ship them to my own server with Docker + nginx. Every project below is live and running on my own infrastructure.",
+    "about.p2": "On the full-stack side I build end-to-end products with Node.js, Express, MongoDB and Socket.io, then ship them to my own server with Docker + nginx. Every web project below is live and running on my own infrastructure, and I build desktop apps with Electron and ship them as installers on GitHub Releases.",
     "experience.title": "Experience",
     "experience.sub": "My professional work history.",
     "experience.education": "Education",
     "skills.title": "Skills",
     "skills.sub": "Technologies and tools I work with.",
     "projects.title": "Projects",
-    "projects.sub": "Live apps I designed, built and deployed from scratch.",
+    "projects.sub": "Web and desktop apps I designed, built and shipped from scratch.",
     "projects.live": "Live",
+    "projects.download": "Download",
     "projects.code": "Code",
     "contact.title": "Get in touch",
     "contact.sub": "Got an idea, or want to work together? Drop me a line.",

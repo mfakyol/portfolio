@@ -44,6 +44,14 @@ export function ArrowIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function DownloadIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4v11m-5-5 5 5 5-5M5 20h14" />
+    </svg>
+  );
+}
+
 export function CodeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...base} {...props}>

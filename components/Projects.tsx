@@ -2,7 +2,7 @@ import Image from "next/image";
 import { PROJECTS } from "@/data/content";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
-import { ArrowIcon, CodeIcon } from "@/components/icons";
+import { ArrowIcon, CodeIcon, DownloadIcon } from "@/components/icons";
 import { GlowCard } from "@/components/GlowCard";
 import { t, type Locale } from "@/lib/i18n";
 
@@ -62,6 +62,17 @@ export function Projects({ locale }: { locale: Locale }) {
                           <ArrowIcon width={18} height={18} />
                         </a>
                       )}
+                      {p.download && (
+                        <a
+                          href={p.download}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${p.name} ${t(locale, "projects.download")}`}
+                          className="rounded-lg border border-border p-2 transition-colors hover:border-border-strong hover:text-text"
+                        >
+                          <DownloadIcon width={18} height={18} />
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -91,6 +102,16 @@ export function Projects({ locale }: { locale: Locale }) {
                         className="glow-btn inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
                       >
                         {t(locale, "projects.live")} <ArrowIcon width={14} height={14} />
+                      </a>
+                    )}
+                    {p.download && (
+                      <a
+                        href={p.download}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="glow-btn inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-accent to-accent-2 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 hover:-translate-y-0.5"
+                      >
+                        <DownloadIcon width={14} height={14} /> {t(locale, "projects.download")}
                       </a>
                     )}
                     {p.repo && (
