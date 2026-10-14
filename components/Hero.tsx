@@ -57,10 +57,11 @@ export function Hero({ locale }: { locale: Locale }) {
         </ButtonLink>
       </div>
 
-      {/* 1px gaps over a border-colored grid draw the dividers between cells. */}
-      <dl className="rise mt-12 grid [--d:450ms] grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+      {/* 1px gaps over a border-colored grid draw the dividers between cells. On wide screens
+          the columns are sized to their values so the stack lists stay on one line. */}
+      <dl className="rise mt-12 grid [--d:450ms] grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:mt-16 lg:grid-cols-[0.7fr_0.85fr_1.25fr_1.35fr]">
         {GLANCE.map((g) => (
-          <div key={g.label.en} className="bg-bg px-5 py-4">
+          <div key={g.label.en} className="bg-bg px-5 py-4 lg:px-4 xl:px-5">
             <dt className="font-mono text-[12.5px] text-muted">{g.label[locale]}</dt>
             <dd className="mt-1 text-lg font-semibold">{g.value[locale]}</dd>
           </div>
