@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { CV_URL, GITHUB, GLANCE, GREETING, HEADLINE, INTRO, LINKEDIN, LOCATION, ROLE } from "@/data/content";
 import { ButtonLink } from "@/components/ButtonLink";
-import { DownloadIcon } from "@/components/icons";
+import { ArrowIcon } from "@/components/icons";
 import { t, type Locale } from "@/lib/i18n";
 
 // Typewriter timing for the greeting (CSS-only, see .type-char in globals.css).
@@ -46,8 +46,8 @@ export function Hero({ locale }: { locale: Locale }) {
       </p>
 
       <div className="rise mt-8 flex flex-wrap gap-3 [--d:360ms]">
-        <ButtonLink variant="primary" href={CV_URL} download>
-          <DownloadIcon width={16} height={16} /> {t(locale, "cv.download")}
+        <ButtonLink variant="primary" href={CV_URL} target="_blank" rel="noreferrer">
+          <ArrowIcon width={16} height={16} /> {t(locale, "cv.view")}
         </ButtonLink>
         <ButtonLink href={LINKEDIN} target="_blank" rel="noreferrer">
           LinkedIn

@@ -26,7 +26,7 @@ Notes unique to **this** repo. General standards live in the sibling docs
   except `Nav`** (the language toggle), **`Spotlight`** (tracks the pointer; its content is
   server-rendered `children`) **and `RevealObserver`** (scroll reveal; renders nothing).
 - `data/content.ts` — **the single source of truth for all copy and config.**
-- `public/Fatih_Akyol_CV.pdf` — the CV behind every "Download CV" link (`CV_URL`). Replace the
+- `public/Fatih_Akyol_CV.pdf` — the CV behind every "View CV" link (`CV_URL`); it opens in a new tab in the browser's own PDF viewer (download/print from there). nginx serves `.pdf` without the page CSP so that viewer isn't blocked. Replace the
   file to update it; keep the name or change `CV_URL`.
 - `public/projects/*.png` — project screenshots, 2:1.
 - `app/icon.svg` (dark tile, lime "FA"), `app/favicon.ico` (16/32/48) and `app/apple-icon.png`

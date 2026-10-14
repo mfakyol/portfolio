@@ -1,6 +1,6 @@
 import { CV_URL, EMAIL } from "@/data/content";
 import { ButtonLink } from "@/components/ButtonLink";
-import { DownloadIcon, MailIcon } from "@/components/icons";
+import { ArrowIcon, MailIcon } from "@/components/icons";
 import { t, type Locale } from "@/lib/i18n";
 
 export function Contact({ locale }: { locale: Locale }) {
@@ -17,8 +17,8 @@ export function Contact({ locale }: { locale: Locale }) {
         <ButtonLink variant="primary" href={`mailto:${EMAIL}`} className="max-w-full break-all">
           <MailIcon width={16} height={16} className="shrink-0" /> {EMAIL}
         </ButtonLink>
-        <ButtonLink href={CV_URL} download>
-          <DownloadIcon width={16} height={16} /> {t(locale, "cv.download")}
+        <ButtonLink href={CV_URL} target="_blank" rel="noreferrer">
+          <ArrowIcon width={16} height={16} /> {t(locale, "cv.view")}
         </ButtonLink>
       </div>
     </section>

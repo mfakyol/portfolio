@@ -48,10 +48,11 @@ export function Nav({ locale }: { locale: Locale }) {
         </button>
         <a
           href={CV_URL}
-          download
+          target="_blank"
+          rel="noreferrer"
           className="ml-1 inline-flex min-h-10 items-center rounded-full border border-border-strong px-4 hover:border-text"
         >
-          cv.pdf ↓
+          cv.pdf ↗
         </a>
       </nav>
     </header>
