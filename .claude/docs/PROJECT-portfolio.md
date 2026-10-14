@@ -29,6 +29,10 @@ Notes unique to **this** repo. General standards live in the sibling docs
 - `public/Fatih_Akyol_CV.pdf` — the CV behind every "Download CV" link (`CV_URL`). Replace the
   file to update it; keep the name or change `CV_URL`.
 - `public/projects/*.png` — project screenshots, 2:1.
+- `app/opengraph-image.png` + `app/twitter-image.png` (+ `.alt.txt`) — the 1200×630 link-preview
+  card (file convention; `metadataBase` in `layout.tsx` makes the URLs absolute). Rendered from
+  `scripts/og-image.html`; after changing the role or headline, re-render it at 1200×630 and
+  overwrite both PNGs.
 - `lib/i18n.ts` — pure, client-safe helpers: `t(locale, key)`, `isLocale`,
   `DEFAULT_LOCALE`, `LOCALE_COOKIE`, and the `Locale` type.
 - `lib/i18n.server.ts` — `getLocale()`, which reads the locale cookie via `next/headers`

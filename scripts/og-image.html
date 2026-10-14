@@ -1,0 +1,61 @@
+<!doctype html>
+<!--
+  Source of app/opengraph-image.png and app/twitter-image.png (the link preview card).
+  Render at exactly 1200x630 (e.g. a headless browser screenshot) and save over both PNGs.
+  Same tokens as app/globals.css; keep the copy in sync with data/content.ts.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>fatihakyol.com share card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background: #0d0e10;
+    color: #ededea;
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+  .glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 65% 85% at 18% 0%, rgb(184 244 90 / 0.16), transparent 70%);
+  }
+  .card {
+    position: relative;
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: 100%; padding: 64px 76px 58px;
+  }
+  .eyebrow { margin: 0; font: 500 22px "IBM Plex Mono", monospace; color: #b8f45a; }
+  .name { margin: 22px 0 0; font-size: 104px; font-weight: 700; line-height: 0.95; letter-spacing: -0.04em; }
+  .line { margin: 22px 0 0; max-width: 900px; font-size: 38px; font-weight: 500; line-height: 1.2; color: #a5a7ab; letter-spacing: -0.01em; }
+  .bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .chips { display: flex; gap: 12px; }
+  .chip { padding: 10px 20px; border-radius: 999px; border: 1.5px solid #34373d; font-size: 24px; }
+  .chip.core { background: #b8f45a; border-color: #b8f45a; color: #0d0e10; font-weight: 700; }
+  .domain { font: 500 24px "IBM Plex Mono", monospace; color: #a5a7ab; }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="card">
+    <div>
+      <p class="eyebrow">Senior Frontend Developer · İstanbul</p>
+      <h1 class="name">Fatih Akyol</h1>
+      <p class="line">I build React and Next.js products, and ship them end to end. Web apps live in production, desktop apps for Windows and macOS.</p>
+    </div>
+    <div class="bottom">
+      <div class="chips">
+        <span class="chip core">React</span>
+        <span class="chip core">Next.js</span>
+        <span class="chip core">TypeScript</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Electron</span>
+      </div>
+      <span class="domain">fatihakyol.com</span>
+    </div>
+  </div>
+</body>
+</html>

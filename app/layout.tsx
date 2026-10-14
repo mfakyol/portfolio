@@ -23,13 +23,25 @@ const plexMono = IBM_Plex_Mono({
 const DESCRIPTION =
   "Senior Frontend Developer specialized in React, Next.js and TypeScript, with Node.js and Express on the backend. Web apps live in production and desktop apps for Windows and macOS.";
 
+const TITLE = `${NAME} — Senior Frontend Developer`;
+
+// The share images come from app/opengraph-image.png and app/twitter-image.png (file
+// convention); metadataBase turns their paths into the absolute URLs crawlers require.
 export const metadata: Metadata = {
-  title: `${NAME} — Senior Frontend Developer`,
+  metadataBase: new URL("https://fatihakyol.com"),
+  title: TITLE,
   description: DESCRIPTION,
   openGraph: {
-    title: `${NAME} — Senior Frontend Developer`,
+    title: TITLE,
     description: DESCRIPTION,
+    url: "/",
+    siteName: NAME,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 
