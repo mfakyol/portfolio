@@ -7,6 +7,12 @@
 # sites-enabled, then:
 #   sudo certbot --nginx -d fatihakyol.com -d www.fatihakyol.com
 # certbot fills in the ssl_certificate lines and the port-443 blocks.
+#
+# Security headers live in snippets (copies in deploy/snippets/). Install them to
+# /etc/nginx/snippets/ once; security-headers.conf and the permissions-*.conf files
+# are shared by every *.fatihakyol.com site. Also set `server_tokens off;` in
+# /etc/nginx/nginx.conf so the nginx version isn't advertised. Then:
+#   sudo nginx -t && sudo systemctl reload nginx
 # =========================================================================
 
 # Redirect http (apex + www) → https apex
@@ -36,6 +42,13 @@ server {
 
     ssl_certificate     /etc/letsencrypt/live/fatihakyol.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/fatihakyol.com/privkey.pem;
+
+    # Security headers (HSTS, nosniff, Referrer-Policy, X-Frame-Options, Permissions-Policy)
+    # and this site's Content-Security-Policy. No add_header inside `location`, or nginx
+    # stops inheriting these.
+    include snippets/security-headers.conf;
+    include snippets/permissions-default.conf;
+    include snippets/csp-portfolio.conf;
 
     location / {
         proxy_pass http://127.0.0.1:8085;

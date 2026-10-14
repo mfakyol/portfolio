@@ -128,6 +128,14 @@ doc — the bar is "static, no interpolated runtime data."
   terminates TLS for `fatihakyol.com` (+ www → apex redirect) via certbot and
   reverse-proxies to `127.0.0.1:8085`.
 - **Security headers / any CSP belong at the host nginx**, not in app code (see security doc).
+  They are live (2026-10-14) as snippets in `/etc/nginx/snippets/`, copied in
+  `deploy/snippets/`: `security-headers.conf` (HSTS incl. subdomains, nosniff,
+  Referrer-Policy, X-Frame-Options SAMEORIGIN) and a `permissions-*.conf` in every
+  *.fatihakyol.com site, plus `csp-portfolio.conf` here only; `server_tokens off` in nginx.conf.
+- ⚠️ **The CSP only allows same-origin resources** (`script-src 'self' 'unsafe-inline'`,
+  images/fonts/connect `'self'`). Adding anything external (analytics, a CDN font, an embed)
+  means updating `csp-portfolio.conf` on the host and its copy here, or the browser blocks it.
+  Check the console for "Content Security Policy" errors after such a change.
 - Deploy: `docker compose -f docker-compose.prod.yml up -d --build`.
 
 ## Testing
