@@ -71,12 +71,15 @@ export const EXPERIENCE: Experience[] = [
       {
         lead: { tr: "Frontend lead:", en: "Frontend lead" },
         text: {
-          tr: "7 kişilik ekipte mimari, kütüphane seçimleri ve kod standartları; kod incelemeleri ve junior geliştiricilere mentorluk",
-          en: "in a 7-person team: architecture, library choices and code standards, plus code reviews and mentoring juniors",
+          tr: "7 kişilik ekipte mimari, kütüphane seçimleri ve kod standartları; kod incelemeleri ve 5 junior geliştiriciye mentorluk",
+          en: "in a 7-person team: architecture, library choices and code standards, plus code reviews and mentoring 5 junior developers",
         },
       },
       {
-        lead: { tr: "Farklı sektörlerden müşteriler için:", en: "Shipped for clients across industries:" },
+        lead: {
+          tr: "Farklı sektörlerden müşteriler için ~15 proje:",
+          en: "Shipped ~15 client projects across industries:",
+        },
         text: {
           tr: "admin panelleri, ödeme adımlarıyla e-ticaret siteleri, şirket içi masaüstü uygulamaları ve React Native mobil uygulamalar",
           en: "admin dashboards, e-commerce storefronts with checkout and payments, internal desktop apps and React Native mobile apps",
@@ -85,18 +88,18 @@ export const EXPERIENCE: Experience[] = [
       {
         lead: { tr: "Kiosk yazılımları:", en: "Kiosk software" },
         text: {
-          tr: "Electron ile, kâğıt para ve bozuk para kabul cihazlarıyla entegre",
-          en: "in Electron, integrated with bill and coin acceptors",
+          tr: "Electron ile, kâğıt para ve bozuk para kabul cihazlarıyla entegre; 50+ cihazda çalışıyor",
+          en: "in Electron, integrated with bill and coin acceptors, running on 50+ devices",
         },
       },
       {
         lead: {
-          tr: "İş açısından kritik bir admin panelini sıfırdan yeniden yazdım:",
-          en: "Rebuilt a business-critical admin dashboard",
+          tr: "İş açısından kritik bir admin panelini ASP.NET 4.5'ten Next.js'e taşıdım:",
+          en: "Moved a business-critical admin dashboard from ASP.NET 4.5 to Next.js:",
         },
         text: {
-          tr: "daha hızlı yükleme, daha sıkı rol bazlı yetkilendirme, çok daha iyi bir deneyim",
-          en: "from scratch: faster loads, stricter role-based access, a far better experience",
+          tr: "sayfalar ~4 kat daha hızlı, arayüz çok daha kullanışlı, rol bazlı yetkilendirme daha sıkı",
+          en: "~4x faster pages, a far more usable UI and stricter role-based access",
         },
       },
       {
