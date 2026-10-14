@@ -69,7 +69,7 @@ export const EXPERIENCE: Experience[] = [
     period: { tr: "Mart 2021 — Devam ediyor", en: "Mar 2021 — now" },
     bullets: [
       {
-        lead: { tr: "Frontend lead:", en: "Frontend lead" },
+        lead: { tr: "Senior frontend developer:", en: "Senior frontend developer" },
         text: {
           tr: "7 kişilik ekipte mimari, kütüphane seçimleri ve kod standartları; kod incelemeleri ve 5 junior geliştiriciye mentorluk",
           en: "in a 7-person team: architecture, library choices and code standards, plus code reviews and mentoring 5 junior developers",
