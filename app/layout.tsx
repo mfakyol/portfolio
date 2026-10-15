@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { RevealObserver } from "@/components/RevealObserver";
 import { NAME } from "@/data/content";
 import { getLocale } from "@/lib/i18n.server";
+import type { Locale } from "@/lib/i18n";
 
 // latin-ext covers Turkish letters (ş, ğ, ı, İ).
 const bricolage = Bricolage_Grotesque({
@@ -20,31 +21,38 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
-const DESCRIPTION =
-  "Senior Frontend Developer specialized in React, Next.js and TypeScript, with Node.js and Express on the backend. Web apps live in production and desktop apps for Windows and macOS.";
+// Matches the page language; a description in another language than the body
+// tends to be ignored by Google in favour of a snippet it picks itself.
+const DESCRIPTION: Record<Locale, string> = {
+  tr: "React, Next.js ve TypeScript odaklı Senior Frontend Developer; backend tarafında Node.js ve Express. Yayında web uygulamaları, Windows ve macOS için masaüstü uygulamaları.",
+  en: "Senior Frontend Developer specialized in React, Next.js and TypeScript, with Node.js and Express on the backend. Web apps live in production and desktop apps for Windows and macOS.",
+};
 
 const TITLE = `${NAME} — Senior Frontend Developer`;
 
 // The share images come from app/opengraph-image.png and app/twitter-image.png (file
 // convention); metadataBase turns their paths into the absolute URLs crawlers require.
-export const metadata: Metadata = {
-  metadataBase: new URL("https://fatihakyol.com"),
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: { canonical: "/" },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const description = DESCRIPTION[await getLocale()];
+  return {
+    metadataBase: new URL("https://fatihakyol.com"),
     title: TITLE,
-    description: DESCRIPTION,
-    url: "/",
-    siteName: NAME,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-  },
-};
+    description,
+    alternates: { canonical: "/" },
+    openGraph: {
+      title: TITLE,
+      description,
+      url: "/",
+      siteName: NAME,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: TITLE,
+      description,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
